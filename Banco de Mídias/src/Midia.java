@@ -9,20 +9,24 @@
  * @author roliv
  */
 public class Midia {
-    String CaminhoDoArquivo;
-    String titulo;
-    String descricao;
-    String autores;
-    int ano;
+    protected String CaminhoDoArquivo;
+    protected String titulo;
+    protected String genero;
+    protected String idioma;
+    protected String descricao;
+    protected String autores;
+    protected int ano;
 
-    public Midia(String CaminhoDoArquivo, String titulo, String descricao, String autores, int ano) {
+    public Midia(String CaminhoDoArquivo, String titulo, String genero, String idioma, String descricao, String autores, int ano) {
         this.CaminhoDoArquivo = CaminhoDoArquivo;
         this.titulo = titulo;
+        this.genero = genero;
+        this.idioma = idioma;
         this.descricao = descricao;
         this.autores = autores;
         this.ano = ano;
     }
-
+    
     public String getCaminhoDoArquivo() {
         return CaminhoDoArquivo;
     }
@@ -37,6 +41,22 @@ public class Midia {
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public String getIdioma() {
+        return idioma;
+    }
+
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
     }
 
     public String getDescricao() {

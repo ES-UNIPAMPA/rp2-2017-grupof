@@ -9,25 +9,15 @@
  * @author roliv
  */
 public class Ebook extends Midia {
-    String genero;
-    String local;
-    String editora;
-    int numPaginas;
+    private String local;
+    private String editora;
+    private int numPaginas;    
 
-    public Ebook(String genero, String local, String editora, int numPaginas, String CaminhoDoArquivo, String titulo, String descricao, String autores, int ano) {
-        super(CaminhoDoArquivo, titulo, descricao, autores, ano);
-        this.genero = genero;
+    public Ebook(String local, String editora, int numPaginas, String CaminhoDoArquivo, String titulo, String genero, String idioma, String descricao, String autores, int ano) {
+        super(CaminhoDoArquivo, titulo, genero, idioma, descricao, autores, ano);
         this.local = local;
         this.editora = editora;
         this.numPaginas = numPaginas;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
     }
 
     public String getLocal() {
@@ -53,6 +43,5 @@ public class Ebook extends Midia {
     public void setNumPaginas(int numPaginas) {
         this.numPaginas = numPaginas;
     }
-    
     
 }
