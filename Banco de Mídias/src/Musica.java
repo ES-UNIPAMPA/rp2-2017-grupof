@@ -9,5 +9,15 @@
  * @author roliv
  */
 public class Musica extends Midia {
+    String interpretes;
+    double duracao;
+    int quantidade;
+    
+    public Musica(String CaminhoDoArquivo, String titulo, String genero, String idioma, String descricao, String autores, int ano, String interpretes, double duracao, int quantidade) {
+        super(CaminhoDoArquivo, titulo, genero, idioma, descricao, autores, ano);
+        this.interpretes = interpretes;
+        this.duracao = duracao;
+        this.quantidade = quantidade;
+    }
     
 }

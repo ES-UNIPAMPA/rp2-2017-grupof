@@ -10,4 +10,8 @@
  */
 public class Podcast extends Midia {
     
+    public Podcast(String CaminhoDoArquivo, String titulo, String genero, String idioma, String descricao, String autores, int ano) {
+        super(CaminhoDoArquivo, titulo, genero, idioma, descricao, autores, ano);
+    }
+    
 }
