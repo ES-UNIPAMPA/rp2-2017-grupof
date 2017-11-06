@@ -32,8 +32,7 @@ public class Midia {
     
     public Midia (String titulo){
         this.titulo = titulo;
-    }
-    
+    }  
     public String getCaminhoDoArquivo() {
         return CaminhoDoArquivo;
     }
