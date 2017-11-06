@@ -11,7 +11,7 @@ import dominio.Musica;
  *
  * @author Matheus Montanha
  */
-public class Test {
+public class TestMusica {
 
     /**
      * @param args the command line arguments
