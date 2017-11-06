@@ -40,4 +40,17 @@ public class Musica extends Midia {
         this.duracao = duracao;
     }
 
+    public String[] ArraytoString() {
+        String[] dados = new String[9];
+        dados[0] = this.CaminhoDoArquivo;
+        dados[1] = this.titulo;
+        dados[2] = this.descricao;
+        dados[3] = this.genero;
+        dados[4] = this.autores;
+        dados[5] = this.idioma;
+        dados[6] = this.ano;
+        dados[7] = this.duracao;
+        dados[8] = this.interpretes;
+        return dados;
+    }
 }

@@ -28,13 +28,15 @@ public class CatalagoMusicas extends Catalogo {
     @Override
     public boolean adicionar(String[] dados) {
         Musica musica = new Musica(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5], dados[6], dados[7], dados[8]);
-        return listaMidias.add(musica);
+        listaMidias.add(musica);
+        return salvar();
     }
 
     @Override
     public boolean remover(String Titulo) {
         Musica nova = new Musica(Titulo);
-        return listaMidias.remove(nova);
+        listaMidias.remove(nova);
+        return salvar();
     }
 
     @Override
@@ -44,7 +46,6 @@ public class CatalagoMusicas extends Catalogo {
         String linha;
         String[] dados = new String[10];
         int cont = 0;
-        boolean retorno = true;
         try {
             FileReader arq = new FileReader(arquivo);
             BufferedReader lerArq = new BufferedReader(arq);
@@ -60,31 +61,40 @@ public class CatalagoMusicas extends Catalogo {
             }
             lerArq.close();
         } catch (IOException e) {
-            retorno = false;
-            return retorno;
+            return false;
         }
-        return false;
+        return true;
     }
 
     @Override
     protected boolean salvar() {
-        String caminho = "";
-        String texto = "";
+        String caminho = "src/Arquivos/musica.txt";
         try {
-            FileWriter arq = new FileWriter(caminho);
-            try (PrintWriter gravarArq = new PrintWriter(arq)) {
-                gravarArq.println(texto);
+            FileWriter arq = new FileWriter(new File(caminho));
+            arq.write(String.valueOf(listaMidias.size()));
+            arq.write(novaLinha + novaLinha);
+            String[] infor = null;
+
+            for (Midia midia : listaMidias) {
+                Musica musica = (Musica) midia;
+                infor = musica.ArraytoString();
+                for (int i = 0; i < infor.length; i++) {
+                    arq.write(infor[i] + novaLinha);
+                }
+                arq.write(novaLinha);
             }
-            return true;
+            arq.close();
         } catch (IOException e) {
             System.out.println(e.getMessage());
             return false;
         }
+        return true;
     }
 
     @Override
     public boolean editar(String[] dados, String tituloOriginal) {
-        return true;
+        return false;
+
     }
 
 }
