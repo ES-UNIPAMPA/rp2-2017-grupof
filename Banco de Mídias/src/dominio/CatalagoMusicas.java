@@ -7,23 +7,29 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
- * @author roliv
+ * @author Matheus Montanha
  */
 public class CatalagoMusicas extends Catalogo {
 
     String novaLinha = System.getProperty("line.separator");
 
+    /**
+     * Método construtor para inicializar a listaMidias
+     */
     public CatalagoMusicas() {
         listaMidias = new ArrayList<>();
     }
 
+    /**
+     * Método para adicionar uma nova musica
+     *
+     * @param dados é recebido para que cada informação da musica guardada no
+     * vetor preencha as variáveis do objeto musica
+     * @return retorna true caso foi salvo com sucesso, caso contrário retorna
+     * false
+     */
     @Override
     public boolean adicionar(String[] dados) {
         Musica musica = new Musica(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5], dados[6], dados[7], dados[8]);
@@ -31,6 +37,13 @@ public class CatalagoMusicas extends Catalogo {
         return salvar();
     }
 
+    /**
+     * Método para remover a música desejada
+     *
+     * @param Titulo para localizar a música que dejesa remover
+     * @return retorna true caso foi salvo com sucesso, caso contrário retorna
+     * false
+     */
     @Override
     public boolean remover(String Titulo) {
         Musica nova = new Musica(Titulo);
@@ -38,12 +51,18 @@ public class CatalagoMusicas extends Catalogo {
         return salvar();
     }
 
+    /**
+     * Método para carregar as informações em um arquivo de texto
+     *
+     * @return retorna true caso foi carregado com sucesso, caso contrário
+     * retorna false
+     */
     @Override
     public boolean carregar() {
         listaMidias = new ArrayList();
         File arquivo = new File("src/Arquivos/musicas.txt");
         String linha;
-        String[] dados = new String[10];
+        String[] dados = new String[9];
         int contador = 0;
         try {
             FileReader arq = new FileReader(arquivo);
@@ -65,6 +84,13 @@ public class CatalagoMusicas extends Catalogo {
         return true;
     }
 
+    /**
+     *
+     * Método para salvar as informações em um arquivo de texto
+     *
+     * @return retorna true se foi salvo com sucesso, caso contrário retorna
+     * false
+     */
     @Override
     protected boolean salvar() {
         String caminho = "src/Arquivos/musica.txt";
@@ -90,10 +116,28 @@ public class CatalagoMusicas extends Catalogo {
         return true;
     }
 
+    /**
+     *
+     * @param dados recebido para conter as informações que serão editadas
+     * @param tituloOriginal recido para achar a música desejada
+     * @return retorna true caso seja editado com sucesso, caso contrário
+     * retorna false
+     */
     @Override
     public boolean editar(String[] dados, String tituloOriginal) {
-        return false;
+        int idProcurado = listaMidias.indexOf(new Musica(tituloOriginal));
+        Musica procurada = (Musica) listaMidias.get(idProcurado);
+        procurada.setCaminhoDoArquivo(dados[0]);
+        procurada.setTitulo(dados[1]);
+        procurada.setDescricao(dados[2]);
+        procurada.setGenero(dados[3]);
+        procurada.setAutores(dados[4]);
+        procurada.setIdioma(dados[5]);
+        procurada.setAno(dados[6]);
+        procurada.setDuracao(dados[7]);
+        procurada.setInterpretes(dados[8]);
 
+        return salvar();
     }
 
 }
