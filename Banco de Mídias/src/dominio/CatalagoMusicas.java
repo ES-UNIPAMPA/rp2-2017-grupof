@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 /*
@@ -45,18 +44,18 @@ public class CatalagoMusicas extends Catalogo {
         File arquivo = new File("src/Arquivos/musicas.txt");
         String linha;
         String[] dados = new String[10];
-        int cont = 0;
+        int contador = 0;
         try {
             FileReader arq = new FileReader(arquivo);
             BufferedReader lerArq = new BufferedReader(arq);
             linha = lerArq.readLine();
             while (linha != null) {
                 if (!linha.equals("")) {
-                    dados[cont] = linha;
-                    cont++;
+                    dados[contador] = linha;
+                    contador++;
                 } else {
                     adicionar(dados);
-                    cont = 0;
+                    contador = 0;
                 }
             }
             lerArq.close();
