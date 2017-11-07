@@ -153,7 +153,7 @@ public class CatalogoEbooks extends Catalogo {
     }
 
     @Override
-    protected Midia buscar() {
+    protected Midia buscar(String [] dados, String titulo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

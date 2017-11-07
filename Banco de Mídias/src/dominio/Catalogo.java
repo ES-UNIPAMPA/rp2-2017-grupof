@@ -25,5 +25,5 @@ public abstract class Catalogo {
 
     abstract protected boolean salvar();
 
-    abstract protected Midia buscar();
+    abstract protected Midia buscar(String [] dados, String titulo);
 }
