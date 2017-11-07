@@ -1,4 +1,4 @@
-1
+2
 
 c:\Documentos\RP2
 Chorou
@@ -9,4 +9,14 @@ Classica
 1997
 Omhtiskmo
 3:90
+
+c:\Documentos\RP2
+Titulo 2
+Nunca nem vi
+Boa
+Polonesa
+Rock
+1880
+Paulo
+2:80
 

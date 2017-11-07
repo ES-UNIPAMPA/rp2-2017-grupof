@@ -141,8 +141,9 @@ public class CatalagoMusicas extends Catalogo {
     }
 
     @Override
-    protected Midia buscar(String [] dados, String titulo) {
-        return null;
-        
+    public Midia buscar(String[] dados, String titulo) {
+        int idProcurado = listaMidias.indexOf(new Musica(titulo));
+        Musica procurada = (Musica) listaMidias.get(idProcurado);
+        return procurada;
     }
 }
