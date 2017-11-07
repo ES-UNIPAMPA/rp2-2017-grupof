@@ -152,4 +152,9 @@ public class CatalogoEbooks extends Catalogo {
         return salvar();
     }
 
+    @Override
+    protected Midia buscar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

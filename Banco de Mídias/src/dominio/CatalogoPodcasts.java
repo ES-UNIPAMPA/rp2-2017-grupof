@@ -36,5 +36,10 @@ public class CatalogoPodcasts extends Catalogo {
     public boolean editar(String[] dados, String tituloOriginal) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    protected Midia buscar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
