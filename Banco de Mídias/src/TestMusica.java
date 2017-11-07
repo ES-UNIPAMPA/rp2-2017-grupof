@@ -33,8 +33,8 @@ public class TestMusica {
         String ano = "1997";
         String caminho = "c:\\Documentos\\RP2";
         Musica musica = new Musica(caminho, titulo, genero, idioma, descricao, autores, ano, interpretes, duracao);
-/*
-        String titulo2 = "Caralho";
+
+        String titulo2 = "Titulo 2";
         String genero2 = "Rock";
         String idioma2 = "Polonesa";
         String descricao2 = "Boa";
@@ -44,7 +44,7 @@ public class TestMusica {
         String ano2 = "1880";
         String caminho2 = "c:\\Documentos\\RP2";
         Musica musica2 = new Musica(caminho2, titulo2, genero2, idioma2, descricao2, autores2, ano2, interpretes2, duracao2);
-*/
+
         CatalagoMusicas catalagoMusica = new CatalagoMusicas();
         catalagoMusica.adicionar(musica.ArraytoString());
         //catalagoMusica.adicionar(musica2.ArraytoString());
