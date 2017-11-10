@@ -1,5 +1,7 @@
 package dominio;
 
+import Midias.Midia;
+import Midias.Ebook;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;

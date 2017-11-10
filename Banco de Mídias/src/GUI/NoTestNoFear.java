@@ -1,7 +1,9 @@
+package GUI;
+
 
 import dominio.CatalogoEbooks;
-import dominio.Ebook;
-import dominio.Midia;
+import Midias.Ebook;
+import Midias.Midia;
 import java.util.List;
 
 /*

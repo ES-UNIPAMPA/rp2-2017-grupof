@@ -1,5 +1,6 @@
 package dominio;
 
+import Midias.Midia;
 import java.util.List;
 
 /*

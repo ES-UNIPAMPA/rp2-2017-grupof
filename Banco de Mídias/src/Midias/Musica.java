@@ -1,7 +1,7 @@
-package dominio;
+package Midias;
 
 /**
- * 
+ *
  * @author Matheus Montanha
  */
 public class Musica extends Midia {
@@ -35,17 +35,24 @@ public class Musica extends Midia {
         this.duracao = duracao;
     }
 
+    @Override
+    public String toString() {
+        String dados;
+        dados = "Caminho do Arquivo: " + this.CaminhoDoArquivo + "\n" + "Titulo: " + this.titulo + "\n" + "Genero: " + this.genero + "\n" + "Idioma: " + this.idioma + "\n" + "Descrição: " + this.descricao + "\n" + "Autores: " + this.autores + "\n" + "Ano: " + this.ano + "\n" + "Interpretes: " + this.interpretes + "\n" + "Duração: " + this.duracao;
+        return dados;
+    }
+
     public String[] ArraytoString() {
         String[] dados = new String[9];
         dados[0] = this.CaminhoDoArquivo;
         dados[1] = this.titulo;
-        dados[2] = this.descricao;
-        dados[3] = this.genero;
-        dados[4] = this.autores;
-        dados[5] = this.idioma;
+        dados[2] = this.genero;
+        dados[3] = this.idioma;
+        dados[4] = this.descricao;
+        dados[5] = this.autores;
         dados[6] = this.ano;
-        dados[7] = this.duracao;
-        dados[8] = this.interpretes;
+        dados[7] = this.interpretes;
+        dados[8] = this.duracao;
         return dados;
     }
 }
