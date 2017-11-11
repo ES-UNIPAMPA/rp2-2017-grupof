@@ -10,7 +10,7 @@ import Midias.Midia;
 
 /**
  *
- * @author roliv
+ * @author AllissonChervenski
  */
 public class Podcast extends Midia {
     
