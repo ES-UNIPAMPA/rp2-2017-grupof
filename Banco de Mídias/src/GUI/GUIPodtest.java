@@ -16,7 +16,7 @@ import java.util.Scanner;
  *
  * @author AllissonChervenski
  */
-public class Podtest implements IMenu {
+public class GUIPodtest implements IMenu {
 
     dominio.GerenciadorMidia gerenciador = new GerenciadorMidia(new ArrayList());
     ValidarEntradaDeDados validacao = new ValidarEntradaDeDados();

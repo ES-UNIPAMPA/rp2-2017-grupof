@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @author Matheus Montanha
  */
 
-public class Principal {
+public class BancoDeMidia {
 
     public void MenuPrincipal() {
         Scanner e = new Scanner(System.in);
@@ -45,7 +45,7 @@ public class Principal {
     }
 
     public static void main(String[] args) {
-        Principal sb = new Principal();
+        BancoDeMidia sb = new BancoDeMidia();
         sb.MenuPrincipal();
     }
 
