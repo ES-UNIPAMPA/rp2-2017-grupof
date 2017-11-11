@@ -32,6 +32,8 @@ public class BancoDeMidia {
                     GUIMusica menuMusica = new GUIMusica();
                     menuMusica.MenuMusica();
                 case 2:
+                    GUIEbook menuEbook = new GUIEbook();
+                    menuEbook.MenuEbook();
                 case 3:
                 case 4:
                 case 0:

@@ -262,7 +262,7 @@ public class GUIMusica implements IMenu {
                 System.out.println("[Tecle ENTER para ignorar]");
                 ano = e.nextLine();
                 if (ano.equals("")); else if (validacao.validarTextos(ano)) {
-                    musica.setAutores(ano);
+                    musica.setAno(ano);
                 } else {
                     System.out.println("Formato incorreto. Digite novamente.");
                     ficar = true;

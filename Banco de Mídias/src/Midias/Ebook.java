@@ -52,6 +52,13 @@ public class Ebook extends Midia {
         this.numPaginas = numPaginas;
     }
 
+    @Override
+    public String toString() {
+        String dados;
+        dados = "Caminho do Arquivo: " + this.CaminhoDoArquivo + "\n" + "Titulo: " + this.titulo + "\n" + "Descrição: " + this.descricao + "\n" + "Genero: " + this.genero + "\n" + "Autores: " + this.autores + "\n" + "Idioma: " + this.idioma + "\n" + "Número de Páginas: " + this.numPaginas + "\n" + "Editora: " + this.editora + "\n" + "Local: " + this.local + "\n" + "Ano: " + this.ano;
+        return dados;
+    }
+
     public String[] toArrayString() {
         String[] dados = new String[10];
         dados[0] = this.CaminhoDoArquivo;

@@ -1,6 +1,6 @@
 2
 
-c:\just\not\works
+c:\just\not
 shablau
 It just works!
 SweetLies
