@@ -55,7 +55,7 @@ public class GerenciadorMidia {
     public boolean editarMidia(String titulo, Midia novaMidia) {
         for (int i = 0; i < listaMidia.size(); i++) {
             if (listaMidia.get(i).getTitulo().equalsIgnoreCase(titulo)) {
-                listaMidia.add(i, novaMidia);
+                listaMidia.set(i, novaMidia);
                 return true;
             }
         }
