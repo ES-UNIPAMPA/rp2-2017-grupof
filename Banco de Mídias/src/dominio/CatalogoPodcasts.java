@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author roliv
+ * @author AllissonChervenski
  */
 public class CatalogoPodcasts extends Catalogo {
     String novaLinha = System.getProperty("line.separator");
