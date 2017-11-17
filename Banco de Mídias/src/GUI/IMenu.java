@@ -17,7 +17,7 @@ public interface IMenu {
 
     public boolean removerMidia();
 
-    public Midia consultarMidia();
+    public String consultarMidia();
 
     public boolean editarMidia();
 }

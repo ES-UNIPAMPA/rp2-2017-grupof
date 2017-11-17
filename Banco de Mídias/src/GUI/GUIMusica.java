@@ -9,6 +9,7 @@ import Validação.ValidarEntradaDeDados;
 import dominio.GerenciadorMidia;
 import Midias.Midia;
 import Midias.Musica;
+import dominio.CatalagoMidia;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -20,6 +21,7 @@ public class GUIMusica implements IMenu {
 
     dominio.GerenciadorMidia gerenciador = new GerenciadorMidia(new ArrayList());
     ValidarEntradaDeDados validacao = new ValidarEntradaDeDados();
+    static String caminho = new java.io.File(".").getAbsolutePath();
 
     public void MenuMusica() {
         Scanner e = new Scanner(System.in);
@@ -40,11 +42,11 @@ public class GUIMusica implements IMenu {
                     removerMidia();
                     break;
                 case 3:
-                    Musica musica = (Musica) consultarMidia();
+                    String musica = consultarMidia();
                     if (musica == null) {
                         System.out.println("Musica inexistente.");
                     } else {
-                        System.out.println(musica.toString());
+                        System.out.println(musica);
                     }
                     break;
                 case 4:
@@ -63,83 +65,32 @@ public class GUIMusica implements IMenu {
     public boolean criarMidia() {
         Scanner e = new Scanner(System.in);
         boolean ficar;
-        String titulo, genero, idioma, descricao, autores, ano, interpretes, duracao;
-        do {
-            ficar = false;
-            System.out.println("Digite o título da musica: ");
-            titulo = e.nextLine();
-            if (validacao.validarTextos(titulo)); else {
-                System.out.println("Titulo incorreto. Digite novamente.");
-                ficar = true;
-            }
-        } while (ficar);
-        do {
-            ficar = false;
-            System.out.println("Digite o genero da musica: ");
-            genero = e.nextLine();
-            if (validacao.validarTextos(genero)); else {
-                System.out.println("Genero incorreto. Digite novamente.");
-                ficar = true;
-            }
-        } while (ficar);
-        do {
-            ficar = false;
-            System.out.println("Digite o idioma da musica: ");
-            idioma = e.nextLine();
-            if (validacao.validarTextos(idioma)); else {
-                System.out.println("Idioma incorreto. Digite novamente.");
-                ficar = true;
-            }
-        } while (ficar);
-        do {
-            ficar = false;
-            System.out.println("Digite uma descrição para a musica: ");
-            descricao = e.nextLine();
-            if (validacao.validarTextos(descricao)); else {
-                System.out.println("Descrição inválida. Digite novamente.");
-                ficar = true;
-            }
-        } while (ficar);
-        do {
-            ficar = false;
-            System.out.println("Digite os autores da musica: ");
-            autores = e.nextLine();
-            if (validacao.validarTextos(autores)); else {
-                System.out.println("Forma inválida. Digite novamente.");
-                ficar = true;
-            }
-        } while (ficar);
-        do {
-            ficar = false;
-            System.out.println("Digite o ano da sua musica: ");
-            ano = e.nextLine();
-            if (validacao.validarTextos(ano)) {
-                System.out.println("Ano incorreto. Digite novamente.");
-                ficar = true;
-            }
-        } while (ficar);
-        do {
-            ficar = false;
-            System.out.println("Digite o interprete da musica: ");
-            interpretes = e.nextLine();
-            if (validacao.validarTextos(interpretes)); else {
-                System.out.println("Formato incorreto. Digite novamente.");
-                ficar = true;
-            }
-        } while (ficar);
-        do {
-            ficar = false;
-            System.out.println("Digite a duração da musica: ");
-            duracao = e.nextLine();
-            if (validacao.validarTextos(duracao)) {
-                System.out.println("Formato incorreto. Digite novamente.");
-                ficar = true;
-            }
-        } while (ficar);
-        String caminho = new java.io.File(".").getAbsolutePath();
-        Musica musica = new Musica(caminho, titulo, genero, idioma, descricao, autores, ano, interpretes, duracao);
+        String titulo = null, genero = null, idioma = null, descricao = null, autores = null, interpretes = null;
+        double duracao = Double.MIN_VALUE;
+        int ano = Integer.MIN_VALUE;
+        System.out.println("Digite o título da música: ");
+        titulo = ValidarEntradaDeDados.nextLine(titulo);
+        System.out.println("Digite o gênero da musica:");
+        genero = ValidarEntradaDeDados.nextLine(genero);
+        System.out.println("Digite a descrição da musica: ");
+        descricao = ValidarEntradaDeDados.nextLine(descricao);
+        System.out.println("Digite autores da musica: ");
+        autores = ValidarEntradaDeDados.nextLine(autores);
+        System.out.println("Digite o ano da musica: ");
+        ano = ValidarEntradaDeDados.nextInt(ano);
+        String ano1 = "" + ano;
+        System.out.println("Digite o interprete da musica: ");
+        interpretes = ValidarEntradaDeDados.nextLine(interpretes);
+        System.out.println("Digite a duração da masica: ");
+        duracao = ValidarEntradaDeDados.nextDouble(duracao);
+        String duracao1 = "" + duracao;
+        System.out.println("Digite o idioma: ");
+        idioma = ValidarEntradaDeDados.nextLine(idioma);
+        Musica musica = new Musica(caminho, titulo, genero, idioma, descricao, autores, ano1, interpretes, duracao1);
         if (gerenciador.adicionarMidia(musica)) {
-            System.out.println("Musica criada com sucesso.");
+            CatalagoMidia catalago = new CatalagoMidia(new ArrayList());
+            catalago.adicionar(musica.ArraytoString(), musica);
+            System.out.println("Registrada com sucesso!");
             return true;
         }
         return false;
@@ -148,153 +99,92 @@ public class GUIMusica implements IMenu {
     @Override
     public boolean removerMidia() {
         Scanner e = new Scanner(System.in);
-        boolean ficar;
-        do {
-            ficar = false;
-            System.out.println("Digite o título da musica que deseja remover: ");
-            String tituloRemover = e.nextLine();
-            if (validacao.validarTextos(tituloRemover)) {
-                if (gerenciador.excluirMidia(tituloRemover)) {
-                    System.out.println("Removido com sucesso.");
-                } else {
-                    System.out.println("Não foi possivel remover.");
-                    return true;
-                }
-            } else {
-                System.out.println("Título incorreto.");
-            }
-        } while (ficar);
+        System.out.println("Digite o título da midia que deseja remover: ");
+        String titulo = null;
+        titulo = ValidarEntradaDeDados.nextLine(titulo);
+        if (gerenciador.excluirMidia(titulo)) {
+            System.out.println("Removido com sucesso!");
+            return true;
+        }
         return false;
     }
 
     @Override
-    public Midia consultarMidia() {
+    public String consultarMidia() {
         Scanner e = new Scanner(System.in);
-        boolean ficar;
-        do {
-            ficar = false;
-            System.out.println("Digite o título da musica que deseja consultar: ");
-            String tituloConsulta = e.nextLine();
-            if (validacao.validarTextos(tituloConsulta)) {
-                Musica musica = (Musica) gerenciador.consultarMidia(tituloConsulta);
-                return musica;
-            } else {
-                System.out.println("Titulo inexistente.");
-            }
-        } while (ficar);
-        return null;
+        String titulo = null;
+        titulo = ValidarEntradaDeDados.nextLine(titulo);
+        String dados = gerenciador.consultarMidia(titulo);
+        return dados;
     }
 
     @Override
     public boolean editarMidia() {
         Scanner e = new Scanner(System.in);
+        Musica musica = null;
         boolean ficar;
-        String titulo, genero, idioma, descricao, autores, ano, interpretes, duracao, resposta;
+        String titulo = null, genero = null, idioma = null, descricao = null, autores = null, interpretes = null;
+        double duracao = Double.MIN_VALUE;
+        int ano = Integer.MIN_VALUE;
         System.out.println("Digite o título da musica que deseja editar: ");
-        String tituloEditar = e.nextLine();
-        Musica musica = (Musica) gerenciador.consultarMidia(tituloEditar);
+        String tituloEditar = null;
+        tituloEditar = ValidarEntradaDeDados.nextLine(tituloEditar);
         if (gerenciador.verificarMidia(tituloEditar)) {
-            do {
-                ficar = false;
-                System.out.println("Novo titulo da música: ");
-                System.out.println("[Tecla ENTER para ignorar]");
-                titulo = e.nextLine();
-                if (titulo.equals("")); else if (validacao.validarTextos(titulo)) {
-                    musica.setTitulo(titulo);
-                } else {
-                    System.out.println("Titulo incorreto. Digite novamente.");
-                    ficar = true;
-                }
-            } while (ficar);
-            do {
-                ficar = false;
-                System.out.println("Novo genero da musica: ");
-                System.out.println("[Tecla ENTER para ignorar]");
-                genero = e.nextLine();
-                if (genero.equals("")); else if (validacao.validarTextos(genero)) {
-                    musica.setGenero(genero);
-                } else {
-                    System.out.println("Genero incorreto. Digite novamente.");
-                    ficar = true;
-                }
-            } while (ficar);
-            do {
-                ficar = false;
-                System.out.println("Novo idioma da musica: ");
-                System.out.println("[Tecla ENTER para ignorar]");
-                idioma = e.nextLine();
-                if (idioma.equals("")); else if (validacao.validarTextos(idioma)) {
-                    musica.setIdioma(idioma);
-                } else {
-                    System.out.println("Idioma incorreto. Digite novamente.");
-                    ficar = true;
-                }
-
-            } while (ficar);
-            do {
-                ficar = false;
-                System.out.println("Nova descrição da musica: ");
-                System.out.println("[tecle ENTER para ignorar]");
-                descricao = e.nextLine();
-                if (descricao.equals("")); else if (validacao.validarTextos(descricao)) {
-                    musica.setDescricao(descricao);
-                } else {
-                    System.out.println("Descrição incorreta. Digite novamente.");
-                    ficar = true;
-                }
-
-            } while (ficar);
-            do {
-                ficar = false;
-                System.out.println("Novos autores da musica: ");
-                System.out.println("[Tecle ENTER para ignorar]");
-                autores = e.nextLine();
-                if (autores.equals("")); else if (validacao.validarTextos(autores)) {
-                    musica.setAutores(autores);
-                } else {
-                    System.out.println("Formato incorreto. Digite novamente.");
-                    ficar = true;
-                }
-            } while (ficar);
-            do {
-                ficar = false;
-                System.out.println("Novo ano da musica: ");
-                System.out.println("[Tecle ENTER para ignorar]");
-                ano = e.nextLine();
-                if (ano.equals("")); else if (validacao.validarTextos(ano)) {
-                    musica.setAno(ano);
-                } else {
-                    System.out.println("Formato incorreto. Digite novamente.");
-                    ficar = true;
-                }
-            } while (ficar);
-            do {
-                ficar = false;
-                System.out.println("Novo interprete da musica: ");
-                System.out.println("[Tecle ENTER para ignorar]");
-                interpretes = e.nextLine();
-                if (interpretes.equals("")); else if (validacao.validarTextos(interpretes)) {
-                    musica.setInterpretes(interpretes);
-                } else {
-                    System.out.println("Formato incorreto. Digite novamnete.");
-                    ficar = true;
-                }
-            } while (ficar);
-            do {
-                ficar = false;
-                System.out.println("Digite a nova duração da musica: ");
-                System.out.println("[Tecle ENTER para ignorar]");
-                duracao = e.nextLine();
-                if (duracao.equals("")); else if (validacao.validarTextos(duracao)) {
-                    musica.setDuracao(duracao);
-                } else {
-                    System.out.println("Formato incorreto. Digite novamente.");
-                    ficar = true;
-                }
-            } while (ficar);
-            return gerenciador.editarMidia(tituloEditar, musica);
-        } else {
-            System.out.println("Musica inexistente.");
+            System.out.println("Digite o novo titulo da musica: ");
+            System.out.println("[TECLE ENTER PARA IGNORAR]");
+            titulo = ValidarEntradaDeDados.nextLine(titulo);
+            if (titulo.equals("")); else {
+                musica.setTitulo(titulo);
+            }
+            System.out.println("Digite o novo genero da musica: ");
+            System.out.println("[TECLE ENTER PARA IGNORAR]");
+            genero = ValidarEntradaDeDados.nextLine(genero);
+            if (genero.equals("")); else {
+                musica.setGenero(genero);
+            }
+            System.out.println("Digite o novo idioma da musica: ");
+            System.out.println("[TECLE ENTER PARA IGNORAR]");
+            idioma = ValidarEntradaDeDados.nextLine(idioma);
+            if (idioma.equals("")); else {
+                musica.setIdioma(idioma);
+            }
+            System.out.println("Digite a nova descrição da musica: ");
+            System.out.println("[TECLE ENTER PARA IGNORAR]");
+            descricao = ValidarEntradaDeDados.nextLine(descricao);
+            if (descricao.equals("")); else {
+                musica.setDescricao(descricao);
+            }
+            System.out.println("Digite a nova duração da musica: ");
+            System.out.println("[TECLE ENTER PARA IGNORAR]");
+            duracao = ValidarEntradaDeDados.nextDouble(duracao);
+            String duracao1 = "" + duracao;
+            if (duracao1.equals("")); else {
+                musica.setDuracao(duracao1);
+            }
+            System.out.println("Digite os novos autores da musica: ");
+            System.out.println("[TECLE ENTER PARA IGNORAR]");
+            autores = ValidarEntradaDeDados.nextLine(autores);
+            if (autores.equals("")); else {
+                musica.setAutores(autores);
+            }
+            System.out.println("Digite o novo interprete: ");
+            System.out.println("[TECLE ENTER PARA IGNORAR]");
+            interpretes = ValidarEntradaDeDados.nextLine(interpretes);
+            if (interpretes.equals("")); else {
+                musica.setInterpretes(interpretes);
+            }
+            System.out.println("Digite o novo ano: ");
+            System.out.println("[TECLE ENTER PARA IGNORAR]");
+            ano = ValidarEntradaDeDados.nextInt(ano);
+            String ano1 = "" + ano;
+            if (ano1.equals("")); else {
+                musica.setAno(ano1);
+            }
+        }
+        Musica musicaEditar = new Musica(caminho, titulo, genero, idioma, descricao, autores, genero, interpretes, descricao);
+        if (gerenciador.editarMidia(tituloEditar, musicaEditar)) {
+            System.out.println("Editado com sucesso.");
+            return true;
         }
         return false;
     }

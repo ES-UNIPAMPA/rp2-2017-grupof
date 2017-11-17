@@ -1,6 +1,5 @@
 package GUI;
 
-
 import dominio.CatalogoEbooks;
 import Midias.Ebook;
 import Midias.Midia;
@@ -36,17 +35,17 @@ public class NoTestNoFear {
 
         catalogo.adicionar(eb1.toArrayString());
         catalogo.adicionar(eb2.toArrayString());
-        
+
         String[] editado = eb1.toArrayString();
         String tituloOriginal = editado[1];
         editado[1] = "shablauuuuu";
         editado[0] = "c:\\just\\notyyyy";
-        
-        catalogo.editar(editado, tituloOriginal);
-        
-       // catalogo.remover("Vita");
 
-//        catalogo.carregar();
+        catalogo.editar(editado, tituloOriginal);
+
+       // catalogo.remover("shablauuuuu");
+
+        //catalogo.carregar();
 
 //        List<Midia> lista = catalogo.getListaMidias();
 //        boolean teste = true;

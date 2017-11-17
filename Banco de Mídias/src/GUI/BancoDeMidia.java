@@ -11,7 +11,6 @@ import java.util.Scanner;
  *
  * @author Matheus Montanha
  */
-
 public class BancoDeMidia {
 
     public void MenuPrincipal() {
@@ -21,7 +20,6 @@ public class BancoDeMidia {
             System.out.println("Bem-vindo. Escolha a midia que deseja: ");
             System.out.println("1 - Musica.");
             System.out.println("2 - Ebook.");
-            System.out.println("3 - Filme.");
             System.out.println("4 - Podcast.");
             System.out.println("0 - Sair.");
 
@@ -32,8 +30,8 @@ public class BancoDeMidia {
                     GUIMusica menuMusica = new GUIMusica();
                     menuMusica.MenuMusica();
                 case 2:
-                    GUIEbook menuEbook = new GUIEbook();
-                    menuEbook.MenuEbook();
+                //GUIEbook menuEbook = new GUIEbook();
+                // menuEbook.MenuEbook();
                 case 3:
                 case 4:
                 case 0:
