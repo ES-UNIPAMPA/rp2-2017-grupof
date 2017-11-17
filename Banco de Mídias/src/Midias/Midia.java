@@ -5,12 +5,12 @@ package Midias;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author roliv
  */
 public class Midia {
+
     protected String CaminhoDoArquivo;
     protected String titulo;
     protected String genero;
@@ -18,7 +18,6 @@ public class Midia {
     protected String descricao;
     protected String autores;
     protected String ano;
-    
 
     public Midia(String CaminhoDoArquivo, String titulo, String genero, String idioma, String descricao, String autores, String ano) {
         this.CaminhoDoArquivo = CaminhoDoArquivo;
@@ -29,10 +28,11 @@ public class Midia {
         this.autores = autores;
         this.ano = ano;
     }
-    
-    public Midia (String titulo){
+
+    public Midia(String titulo) {
         this.titulo = titulo;
-    }  
+    }
+
     public String getCaminhoDoArquivo() {
         return CaminhoDoArquivo;
     }
@@ -87,6 +87,12 @@ public class Midia {
 
     public void setAno(String ano) {
         this.ano = ano;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        Midia outraMidia = (Midia) o;
+        return this.getTitulo().equals(outraMidia.getTitulo());
     }
 
 }
