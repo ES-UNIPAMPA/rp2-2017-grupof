@@ -59,9 +59,11 @@ public class Ebook extends Midia {
         return dados;
     }
     
-    public String toFile(){
-        String caminho = "src/Arquivos/ebook.txt";
-        return caminho;
+    @Override
+    public String toFile() {
+        String dados;
+        dados =this.CaminhoDoArquivo + "\n" + this.titulo + "\n" +this.descricao + "\n" + this.genero + "\n" + this.autores + "\n" + this.idioma + "\n" + this.numPaginas + "\n" + this.editora + "\n" + this.local + "\n" + this.ano;
+        return dados;
     }
     
     public String[] toArrayString() {

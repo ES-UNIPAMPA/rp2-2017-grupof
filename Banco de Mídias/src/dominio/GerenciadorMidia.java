@@ -26,27 +26,28 @@ import java.util.logging.Logger;
 public class GerenciadorMidia {
 
     private static List<Midia> listaMidia;
+    private final String caminho;
 
     /**
      * Método construtor para inicializar a list
      *
      * @param listaMidia recebido para criar a list do tipo desejada
+     * @param caminho
      */
-    public GerenciadorMidia(List listaMidia) {
+    public GerenciadorMidia(List listaMidia, String caminho) {
         GerenciadorMidia.listaMidia = listaMidia;
-
+        this.caminho = caminho;
     }
 
     /**
      * Método para adicionar uma nova midia
      *
      * @param novaMidia midia a ser adicionada na lista
-     * @param caminho
      * @return True caso foi adicionado, caso contrário, retorna False
      */
-    public boolean adicionarMidia(Midia novaMidia, String caminho) {
+    public boolean adicionarMidia(Midia novaMidia) {
         listaMidia.add(novaMidia);
-        return salvar(novaMidia, caminho);
+        return salvar();
     }
 
     /**
@@ -56,10 +57,10 @@ public class GerenciadorMidia {
      * @return True caso foi removido com sucesso, caso contrário, retorna
      * False;
      */
-    public boolean remover(String titulo, String caminho) {
+    public boolean remover(String titulo) {
         Ebook novo = new Ebook(titulo);
         listaMidia.remove(novo);
-        return salvar(novo, caminho);
+        return salvar();
     }
 
     /**
@@ -90,7 +91,7 @@ public class GerenciadorMidia {
         String dados = null;
         for (int i = 0; i < listaMidia.size(); i++) {
             if (listaMidia.get(i).getTitulo().equals(titulo)) {
-                dados = listaMidia.get(i).toString();
+                dados = listaMidia.get(i).toString() + "\n";
             }
         }
         return dados;
@@ -119,7 +120,7 @@ public class GerenciadorMidia {
         return listaTodos;
     }
 
-    public boolean salvar(Midia midias, String caminho) {
+    public boolean salvar() {
         String novaLinha = System.getProperty("line.separator");
         try {
             FileWriter escritorArquivo = new FileWriter(new File(caminho));
@@ -127,12 +128,7 @@ public class GerenciadorMidia {
             escritorArquivo.write(novaLinha + novaLinha);
             String[] dados;
             for (Midia midia : listaMidia) {
-                Ebook ebook = (Ebook) midia;
-                dados = ebook.toArrayString();
-                for (int i = 0; i < dados.length; i++) {
-                    escritorArquivo.write(dados[i] + novaLinha);
-                }
-                escritorArquivo.write(novaLinha);
+                escritorArquivo.write(midia.toFile());
             }
             escritorArquivo.close();
         } catch (IOException ex) {
@@ -142,7 +138,7 @@ public class GerenciadorMidia {
         return true;
     }
 
-    public boolean carregar(Midia midia, String caminho) {
+    public boolean carregar(Midia midia) {
         listaMidia = new ArrayList();
         File arquivo = new File(caminho);
         try {
@@ -158,7 +154,7 @@ public class GerenciadorMidia {
                     dados[cont] = linhas;
                     cont++;
                 } else {
-                    adicionarMidia(midia, caminho);
+                    adicionarMidia(midia);
                     cont = 0;
                 }
             }

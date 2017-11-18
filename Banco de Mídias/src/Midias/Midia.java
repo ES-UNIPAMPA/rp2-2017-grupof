@@ -94,4 +94,7 @@ public class Midia {
         Midia outraMidia = (Midia) o;
         return this.getTitulo().equals(outraMidia.getTitulo());
     }
+    public String toFile(){
+        return "";
+    }
 }

@@ -7,7 +7,6 @@ package GUI;
 
 import Validação.ValidarEntradaDeDados;
 import dominio.GerenciadorMidia;
-import Midias.Midia;
 import Midias.Musica;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -18,7 +17,7 @@ import java.util.Scanner;
  */
 public class GUIMusica implements IMenu {
 
-    dominio.GerenciadorMidia gerenciador = new GerenciadorMidia(new ArrayList());
+    dominio.GerenciadorMidia gerenciador = new GerenciadorMidia(new ArrayList(), "musica.txt");
     ValidarEntradaDeDados validacao = new ValidarEntradaDeDados();
     static String caminho = new java.io.File(".").getAbsolutePath();
 
@@ -86,7 +85,7 @@ public class GUIMusica implements IMenu {
         System.out.println("Digite o idioma: ");
         idioma = ValidarEntradaDeDados.nextLine(idioma);
         Musica musica = new Musica(caminho, titulo, genero, idioma, descricao, autores, ano1, interpretes, duracao1);
-        if (gerenciador.adicionarMidia(musica, musica.toFile())) {
+        if (gerenciador.adicionarMidia(musica)) {
             System.out.println("Registrado com sucesos.");
             return true;
 
@@ -101,7 +100,7 @@ public class GUIMusica implements IMenu {
         String titulo = null;
         String caminho = "";
         titulo = ValidarEntradaDeDados.nextLine(titulo);
-        if (gerenciador.remover(titulo, caminho)) {
+        if (gerenciador.remover(titulo)) {
             System.out.println("Removido com sucesso!");
             return true;
         }
