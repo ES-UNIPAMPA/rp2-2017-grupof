@@ -42,7 +42,7 @@ public class Musica extends Midia {
         return dados;
     }
 
-    public String file() {
+    public String toFile() {
         this.CaminhoDoArquivo = "src/Arquivos/musica.txt";
         return CaminhoDoArquivo;
     }

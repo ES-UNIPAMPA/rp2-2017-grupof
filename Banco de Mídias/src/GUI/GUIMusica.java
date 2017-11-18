@@ -9,7 +9,6 @@ import Validação.ValidarEntradaDeDados;
 import dominio.GerenciadorMidia;
 import Midias.Midia;
 import Midias.Musica;
-import dominio.CatalagoMidia;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -87,15 +86,10 @@ public class GUIMusica implements IMenu {
         System.out.println("Digite o idioma: ");
         idioma = ValidarEntradaDeDados.nextLine(idioma);
         Musica musica = new Musica(caminho, titulo, genero, idioma, descricao, autores, ano1, interpretes, duracao1);
-        if (gerenciador.adicionarMidia(musica)) {
+        if (gerenciador.adicionarMidia(musica, caminho)) {
             System.out.println("Registrado com sucesos.");
-            /*
-            CatalagoMidia catalago = new CatalagoMidia(new ArrayList());
-            
-            catalago.adicionar(musica.ArraytoString(), musica);
-            System.out.println("Registrada com sucesso!");
             return true;
-             */
+
         }
         return false;
     }
@@ -105,8 +99,9 @@ public class GUIMusica implements IMenu {
         Scanner e = new Scanner(System.in);
         System.out.println("Digite o título da midia que deseja remover: ");
         String titulo = null;
+        String caminho = "";
         titulo = ValidarEntradaDeDados.nextLine(titulo);
-        if (gerenciador.excluirMidia(titulo)) {
+        if (gerenciador.remover(titulo, caminho)) {
             System.out.println("Removido com sucesso!");
             return true;
         }

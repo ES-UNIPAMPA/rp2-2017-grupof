@@ -137,7 +137,7 @@ public class GerenciadorMidia {
             }
             escritorArquivo.close();
         } catch (IOException ex) {
-            Logger.getLogger(CatalogoEbooks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GerenciadorMidia.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
         return true;
@@ -165,10 +165,10 @@ public class GerenciadorMidia {
             }
 
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(CatalogoEbooks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GerenciadorMidia.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         } catch (IOException ex) {
-            Logger.getLogger(CatalogoEbooks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GerenciadorMidia.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
         return true;
