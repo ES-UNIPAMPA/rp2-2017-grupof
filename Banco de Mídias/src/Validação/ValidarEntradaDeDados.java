@@ -53,9 +53,8 @@ public class ValidarEntradaDeDados {
 
     public static double nextDouble(double numero) {
         Scanner e = new Scanner(System.in);
-        boolean ficar;
+        boolean ficar = false;
         do {
-            ficar = false;
             try {
                 numero = e.nextDouble();
             } catch (Exception e2) {

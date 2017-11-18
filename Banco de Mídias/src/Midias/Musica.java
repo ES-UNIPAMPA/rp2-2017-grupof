@@ -42,6 +42,11 @@ public class Musica extends Midia {
         return dados;
     }
 
+    public String file() {
+        this.CaminhoDoArquivo = "src/Arquivos/musica.txt";
+        return CaminhoDoArquivo;
+    }
+
     public String[] ArraytoString() {
         String[] dados = new String[9];
         dados[0] = this.CaminhoDoArquivo;

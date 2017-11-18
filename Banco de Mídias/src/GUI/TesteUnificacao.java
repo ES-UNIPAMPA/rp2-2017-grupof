@@ -6,6 +6,7 @@
 package GUI;
 
 import Midias.Ebook;
+import Midias.Midia;
 import Midias.Musica;
 import dominio.CatalagoMidia;
 import dominio.CatalogoEbooks;
@@ -35,10 +36,13 @@ public class TesteUnificacao {
         String ano = "2011";
 
         Musica eb1 = new Musica(CaminhoDoArquivo, titulo, genero, idioma, descricao, autores, ano, autores, descricao);
-        Musica eb2 = new Musica(CaminhoDoArquivo, titulo, genero, idioma, descricao, autores, ano, autores, descricao);
+        //Musica eb2 = new Musica(CaminhoDoArquivo, titulo, genero, idioma, descricao, autores, ano, autores, descricao);
         CatalagoMidia catalago = new CatalagoMidia(new ArrayList());
         catalago.adicionar(eb1.ArraytoString(), eb1);
-        catalago.adicionar(eb2.ArraytoString(), eb2);
+        Midia midia;
+        midia = catalago.buscar(titulo);
+        System.out.println(midia.toString());
+        //catalago.adicionar(eb2.ArraytoString(), eb2);
         //Musica eb1 = null;
         //catalago.remover("Todd Howard");
         //catalago.carregar(eb1);

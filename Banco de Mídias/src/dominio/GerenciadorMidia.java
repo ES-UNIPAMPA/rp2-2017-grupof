@@ -6,9 +6,19 @@
  */
 package dominio;
 
+import Midias.Ebook;
 import Midias.Midia;
+import Midias.Musica;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -32,10 +42,12 @@ public class GerenciadorMidia {
      * Método para adicionar uma nova midia
      *
      * @param novaMidia midia a ser adicionada na lista
+     * @param caminho
      * @return True caso foi adicionado, caso contrário, retorna False
      */
-    public boolean adicionarMidia(Midia novaMidia) {
-        return listaMidia.add(novaMidia);
+    public boolean adicionarMidia(Midia novaMidia, String caminho) {
+        listaMidia.add(novaMidia);
+        return salvar(novaMidia, caminho);
     }
 
     /**
@@ -76,7 +88,7 @@ public class GerenciadorMidia {
      * Método para consultar uma mídia desejada
      *
      * @param titulo para saber qual musica deve retornar
-     * @return retorna a midia desejada
+     * @return retorna uma String com a midia desejada
      */
     public String consultarMidia(String titulo) {
         //ArrayList<Midia> consulta = new ArrayList<>();
@@ -103,4 +115,68 @@ public class GerenciadorMidia {
         }
         return false;
     }
+
+    public ArrayList retornaMidias() {
+        ArrayList<Midia> listaTodos = new ArrayList<>();
+        for (int i = 0; i < listaMidia.size(); i++) {
+            listaTodos.add(listaMidia.get(i));
+        }
+        return listaTodos;
+    }
+
+    public boolean salvar(Midia midias, String caminho) {
+        String novaLinha = System.getProperty("line.separator");
+        try {
+            FileWriter escritorArquivo = new FileWriter(new File(caminho));
+            escritorArquivo.write(String.valueOf(listaMidia.size()));
+            escritorArquivo.write(novaLinha + novaLinha);
+            String[] dados;
+            for (Midia midia : listaMidia) {
+                Ebook ebook = (Ebook) midia;
+                dados = ebook.toArrayString();
+                for (int i = 0; i < dados.length; i++) {
+                    escritorArquivo.write(dados[i] + novaLinha);
+                }
+                escritorArquivo.write(novaLinha);
+            }
+            escritorArquivo.close();
+        } catch (IOException ex) {
+            Logger.getLogger(CatalogoEbooks.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean carregar(Midia midia) {
+        listaMidia = new ArrayList();
+        String caminho = "";
+        File arquivo = new File(caminho);
+        try {
+            FileReader fileReader = new FileReader(arquivo);
+            BufferedReader buffR = new BufferedReader(fileReader);
+            String linhas;
+            String[] dados = new String[10];
+            int cont = 0;
+            buffR.readLine();
+            buffR.readLine();
+            while ((linhas = buffR.readLine()) != null) {
+                if (!linhas.equals("")) {
+                    dados[cont] = linhas;
+                    cont++;
+                } else {
+                    adicionarMidia(midia);
+                    cont = 0;
+                }
+            }
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(CatalogoEbooks.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        } catch (IOException ex) {
+            Logger.getLogger(CatalogoEbooks.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        return true;
+    }
+
 }

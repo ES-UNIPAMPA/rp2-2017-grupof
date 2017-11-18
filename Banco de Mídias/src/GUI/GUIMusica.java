@@ -88,10 +88,14 @@ public class GUIMusica implements IMenu {
         idioma = ValidarEntradaDeDados.nextLine(idioma);
         Musica musica = new Musica(caminho, titulo, genero, idioma, descricao, autores, ano1, interpretes, duracao1);
         if (gerenciador.adicionarMidia(musica)) {
+            System.out.println("Registrado com sucesos.");
+            /*
             CatalagoMidia catalago = new CatalagoMidia(new ArrayList());
+            
             catalago.adicionar(musica.ArraytoString(), musica);
             System.out.println("Registrada com sucesso!");
             return true;
+             */
         }
         return false;
     }
@@ -121,9 +125,10 @@ public class GUIMusica implements IMenu {
     @Override
     public boolean editarMidia() {
         Scanner e = new Scanner(System.in);
-        Musica musica = null;
+
         boolean ficar;
         String titulo = null, genero = null, idioma = null, descricao = null, autores = null, interpretes = null;
+        Musica musica = new Musica(caminho, titulo, genero, idioma, descricao, autores, genero, interpretes, descricao);
         double duracao = Double.MIN_VALUE;
         int ano = Integer.MIN_VALUE;
         System.out.println("Digite o título da musica que deseja editar: ");
@@ -132,51 +137,51 @@ public class GUIMusica implements IMenu {
         if (gerenciador.verificarMidia(tituloEditar)) {
             System.out.println("Digite o novo titulo da musica: ");
             System.out.println("[TECLE ENTER PARA IGNORAR]");
-            titulo = ValidarEntradaDeDados.nextLine(titulo);
+            titulo = e.nextLine();
             if (titulo.equals("")); else {
                 musica.setTitulo(titulo);
             }
             System.out.println("Digite o novo genero da musica: ");
             System.out.println("[TECLE ENTER PARA IGNORAR]");
-            genero = ValidarEntradaDeDados.nextLine(genero);
+            genero = e.nextLine();
             if (genero.equals("")); else {
                 musica.setGenero(genero);
             }
             System.out.println("Digite o novo idioma da musica: ");
             System.out.println("[TECLE ENTER PARA IGNORAR]");
-            idioma = ValidarEntradaDeDados.nextLine(idioma);
+            idioma = e.nextLine();
             if (idioma.equals("")); else {
                 musica.setIdioma(idioma);
             }
             System.out.println("Digite a nova descrição da musica: ");
             System.out.println("[TECLE ENTER PARA IGNORAR]");
-            descricao = ValidarEntradaDeDados.nextLine(descricao);
+            descricao = e.nextLine();
             if (descricao.equals("")); else {
                 musica.setDescricao(descricao);
             }
             System.out.println("Digite a nova duração da musica: ");
             System.out.println("[TECLE ENTER PARA IGNORAR]");
-            duracao = ValidarEntradaDeDados.nextDouble(duracao);
-            String duracao1 = "" + duracao;
+            //duracao = e.nextDouble();
+            String duracao1 = e.nextLine();
             if (duracao1.equals("")); else {
                 musica.setDuracao(duracao1);
             }
             System.out.println("Digite os novos autores da musica: ");
             System.out.println("[TECLE ENTER PARA IGNORAR]");
-            autores = ValidarEntradaDeDados.nextLine(autores);
+            autores = e.nextLine();
             if (autores.equals("")); else {
                 musica.setAutores(autores);
             }
             System.out.println("Digite o novo interprete: ");
             System.out.println("[TECLE ENTER PARA IGNORAR]");
-            interpretes = ValidarEntradaDeDados.nextLine(interpretes);
+            interpretes = e.nextLine();
             if (interpretes.equals("")); else {
                 musica.setInterpretes(interpretes);
             }
             System.out.println("Digite o novo ano: ");
             System.out.println("[TECLE ENTER PARA IGNORAR]");
-            ano = ValidarEntradaDeDados.nextInt(ano);
-            String ano1 = "" + ano;
+            //ano = e.next();
+            String ano1 = e.nextLine();
             if (ano1.equals("")); else {
                 musica.setAno(ano1);
             }
