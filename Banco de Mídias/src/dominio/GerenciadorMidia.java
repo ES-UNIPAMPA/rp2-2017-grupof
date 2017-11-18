@@ -57,14 +57,10 @@ public class GerenciadorMidia {
      * @return True caso foi removido com sucesso, caso contrário, retorna
      * False;
      */
-    public boolean excluirMidia(String titulo) {
-        for (int i = 0; i < listaMidia.size(); i++) {
-            if (listaMidia.get(i).getTitulo().equalsIgnoreCase(titulo)) {
-                listaMidia.remove(i);
-                return true;
-            }
-        }
-        return false;
+    public boolean remover(String titulo, String caminho) {
+        Ebook novo = new Ebook(titulo);
+        listaMidia.remove(novo);
+        return salvar(novo, caminho);
     }
 
     /**
@@ -147,9 +143,8 @@ public class GerenciadorMidia {
         return true;
     }
 
-    public boolean carregar(Midia midia) {
+    public boolean carregar(Midia midia, String caminho) {
         listaMidia = new ArrayList();
-        String caminho = "";
         File arquivo = new File(caminho);
         try {
             FileReader fileReader = new FileReader(arquivo);
@@ -164,7 +159,7 @@ public class GerenciadorMidia {
                     dados[cont] = linhas;
                     cont++;
                 } else {
-                    adicionarMidia(midia);
+                    adicionarMidia(midia, caminho);
                     cont = 0;
                 }
             }

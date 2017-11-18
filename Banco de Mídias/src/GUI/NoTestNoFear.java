@@ -41,7 +41,14 @@ public class NoTestNoFear {
         editado[1] = "shablauuuuu";
         editado[0] = "c:\\just\\notyyyy";
 
+
         catalogo.editar(editado, tituloOriginal);
+
+        
+       // catalogo.editar(editado, tituloOriginal);
+        
+       catalogo.remover("Todd Howard");
+
 
        // catalogo.remover("shablauuuuu");
 

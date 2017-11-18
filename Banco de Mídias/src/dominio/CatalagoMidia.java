@@ -50,7 +50,7 @@ public class CatalagoMidia {
             musica.setAno(dados[6]);
             musica.setInterpretes(dados[7]);
             musica.setDuracao(dados[8]);
-            return salvar(musica);
+         //   return salvar(musica);
         }
         if (procurada instanceof Ebook) {
             Ebook original = (Ebook) procurada;
@@ -64,7 +64,7 @@ public class CatalagoMidia {
             original.setEditora(dados[7]);
             original.setLocal(dados[8]);
             original.setAno(dados[9]);
-            return salvar(original);
+          //  return salvar(original);
         }
         return false;
     }
