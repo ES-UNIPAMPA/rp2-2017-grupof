@@ -86,7 +86,7 @@ public class GUIMusica implements IMenu {
         System.out.println("Digite o idioma: ");
         idioma = ValidarEntradaDeDados.nextLine(idioma);
         Musica musica = new Musica(caminho, titulo, genero, idioma, descricao, autores, ano1, interpretes, duracao1);
-        if (gerenciador.adicionarMidia(musica, caminho)) {
+        if (gerenciador.adicionarMidia(musica, musica.toFile())) {
             System.out.println("Registrado com sucesos.");
             return true;
 
