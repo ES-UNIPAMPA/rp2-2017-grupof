@@ -9,6 +9,7 @@ import Validação.ValidarEntradaDeDados;
 import dominio.GerenciadorMidia;
 import Midias.Musica;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -18,12 +19,11 @@ import java.util.Scanner;
 public class GUIMusica implements IMenu {
 
     dominio.GerenciadorMidia gerenciador = new GerenciadorMidia(new ArrayList(), "musica.txt");
-    ValidarEntradaDeDados validacao = new ValidarEntradaDeDados();
     static String caminho = new java.io.File(".").getAbsolutePath();
 
     public void MenuMusica() {
         Scanner e = new Scanner(System.in);
-        int opcao;
+        int opcao = Integer.MIN_VALUE;
         do {
             System.out.println("1 - Criar musica.");
             System.out.println("2 - Excluir musica.");
@@ -31,7 +31,7 @@ public class GUIMusica implements IMenu {
             System.out.println("4 - Editar musica.");
             System.out.println("5 - Voltar ao menu principal");
             System.out.println("O que deseja fazer?");
-            opcao = e.nextInt();
+            opcao = ValidarEntradaDeDados.validarInteiro(opcao);
             switch (opcao) {
                 case 1:
                     criarMidia();
@@ -64,8 +64,10 @@ public class GUIMusica implements IMenu {
         Scanner e = new Scanner(System.in);
         boolean ficar;
         String titulo = null, genero = null, idioma = null, descricao = null, autores = null, interpretes = null;
-        double duracao = Double.MIN_VALUE;
+        //double duracao = Double.MIN_VALUE;
         int ano = Integer.MIN_VALUE;
+        String ano1 = null;
+        String duracao1 = null;
         System.out.println("Digite o título da música: ");
         titulo = ValidarEntradaDeDados.nextLine(titulo);
         System.out.println("Digite o gênero da musica:");
@@ -75,18 +77,17 @@ public class GUIMusica implements IMenu {
         System.out.println("Digite autores da musica: ");
         autores = ValidarEntradaDeDados.nextLine(autores);
         System.out.println("Digite o ano da musica: ");
-        ano = ValidarEntradaDeDados.nextInt(ano);
-        String ano1 = "" + ano;
+        ano1 = ValidarEntradaDeDados.nextInt(ano1);
         System.out.println("Digite o interprete da musica: ");
         interpretes = ValidarEntradaDeDados.nextLine(interpretes);
         System.out.println("Digite a duração da masica: ");
-        duracao = ValidarEntradaDeDados.nextDouble(duracao);
-        String duracao1 = "" + duracao;
+        duracao1 = ValidarEntradaDeDados.nextDouble(duracao1);
         System.out.println("Digite o idioma: ");
         idioma = ValidarEntradaDeDados.nextLine(idioma);
         Musica musica = new Musica(caminho, titulo, genero, idioma, descricao, autores, ano1, interpretes, duracao1);
         if (gerenciador.adicionarMidia(musica)) {
             System.out.println("Registrado com sucesos.");
+            gerenciador.carregar(musica);
             return true;
 
         }

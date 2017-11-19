@@ -17,12 +17,12 @@ import java.util.regex.Pattern;
 public class ValidarEntradaDeDados {
 
     public static String nextLine(String texto) {
-        Scanner e = new Scanner(System.in);
         boolean ficar;
         do {
+            Scanner e = new Scanner(System.in);
             ficar = false;
             texto = e.nextLine();
-            if (texto == null || " ".equals(texto)) {
+            if (texto == null || " ".equals(texto) || texto.equals("")) {
                 ficar = true;
                 System.out.println("Formato incorreto. Digite novamente: ");
             } else {
@@ -37,31 +37,46 @@ public class ValidarEntradaDeDados {
         return texto;
     }
 
-    public static int nextInt(int numero) {
+    public static String nextInt(String numero) {
         Scanner e = new Scanner(System.in);
-        boolean ficar = false;
+        boolean ficar;
         do {
             try {
-                numero = Integer.parseInt(e.nextLine());
-            } catch (NumberFormatException e7) {
-                System.out.println("Formato incorreto. Digite novamente:");
+                numero = e.nextLine();
+                Integer.parseInt(numero);
+                return numero;
+            } catch (NumberFormatException e5) {
                 ficar = true;
+                System.out.println("Incorreto. Digite novamente.");
             }
         } while (ficar);
         return numero;
     }
 
-    public static double nextDouble(double numero) {
+    public static String nextDouble(String numero) {
         Scanner e = new Scanner(System.in);
-        boolean ficar = false;
+        boolean ficar;
         do {
             try {
-                numero = e.nextDouble();
-            } catch (Exception e2) {
-                System.out.println("Formato incorreto. Digite novamente.");
+                numero = e.next();
+                Double.parseDouble(numero);
+                return numero;
+            } catch (NumberFormatException e2) {
                 ficar = true;
+                System.out.println("Formato incorreto. Digite novamente.");
             }
         } while (ficar);
+        return numero;
+    }
+
+    public static int validarInteiro(int numero) {
+        boolean ficar;
+        Scanner e = new Scanner(System.in);
+        try {
+            numero = e.nextInt();
+            return numero;
+        } catch (InputMismatchException e7) {
+        }
         return numero;
     }
 }

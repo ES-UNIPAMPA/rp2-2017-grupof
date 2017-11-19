@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -15,16 +16,15 @@ public class BancoDeMidia {
 
     public void MenuPrincipal() {
         Scanner e = new Scanner(System.in);
-        int opcao;
+        int opcao = Integer.MIN_VALUE;
         do {
             System.out.println("Bem-vindo. Escolha a midia que deseja: ");
             System.out.println("1 - Musica.");
             System.out.println("2 - Ebook.");
             System.out.println("4 - Podcast.");
             System.out.println("0 - Sair.");
-
             System.out.println("Digite a opção desejada: ");
-            opcao = e.nextInt();
+            opcao = Validação.ValidarEntradaDeDados.validarInteiro(opcao);
             switch (opcao) {
                 case 1:
                     GUIMusica menuMusica = new GUIMusica();
