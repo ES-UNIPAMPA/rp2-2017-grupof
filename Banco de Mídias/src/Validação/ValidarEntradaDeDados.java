@@ -16,9 +16,8 @@ import java.util.regex.Pattern;
  */
 public class ValidarEntradaDeDados {
 
-    public static String nextLine() {
-        String texto;
-        boolean ficar = true;
+    public static String nextLine(String texto) {
+        boolean ficar;
         do {
             Scanner e = new Scanner(System.in);
             ficar = false;
@@ -39,8 +38,7 @@ public class ValidarEntradaDeDados {
         return texto;
     }
 
-    public static String nextInt() {
-        String numero = "";
+    public static String nextInt(String numero) {
         Scanner e = new Scanner(System.in);
         boolean ficar;
         do {
@@ -82,5 +80,10 @@ public class ValidarEntradaDeDados {
         } catch (InputMismatchException e7) {
         }
         return numero;
+    }
+
+    public static String entradaEnter() {
+        return null;
+
     }
 }

@@ -15,10 +15,9 @@ import java.util.Scanner;
  *
  * @author roliv
  */
-public class GUIEbook extends GUIMidia {
+public class GUIEbook extends GUIMidia implements IMenu {
 
-   
-    GerenciadorMidia gerenciador;  
+    GerenciadorMidia gerenciador;
     final String caminho = "src/Arquivos/ebook.txt";
 
     public GUIEbook() {
@@ -27,7 +26,7 @@ public class GUIEbook extends GUIMidia {
     }
 
     public void MenuEbook() {
-        
+
         int opcao = -1;
         do {
             System.out.println("1 - Adicionar ebook.");
@@ -45,12 +44,7 @@ public class GUIEbook extends GUIMidia {
                     removerMidia();
                     break;
                 case 3:
-                    String ebook = consultarMidia();
-                    if (ebook == null) {
-                        System.out.println("Ebook inexistente.");
-                    } else {
-                        System.out.println(ebook.toString());
-                    }
+                    consultarMidia();
                     break;
                 case 4:
                     editarMidia();
@@ -71,39 +65,42 @@ public class GUIEbook extends GUIMidia {
         String editora = null, local = null, numPaginas = null;
 
         System.out.println("Digite o número de páginas: ");
-        numPaginas = ValidarEntradaDeDados.nextInt();
+        numPaginas = ValidarEntradaDeDados.nextInt(numPaginas);
         System.out.println("Digite o nome da editora: ");
-        editora = ValidarEntradaDeDados.nextLine();
+        editora = ValidarEntradaDeDados.nextLine(editora);
         System.out.println("Digite o local/país:");
-        local = ValidarEntradaDeDados.nextLine();
+        local = ValidarEntradaDeDados.nextLine(local);
 
         Midia ebook = new Ebook(caminhoArquivo, titulo, descricao, genero, autores, idioma, ano, numPaginas, editora, local);
         gerenciador.adicionarMidia(ebook);
         System.out.println("Ebook adicionado com sucesso!");
     }
 
-
-    public boolean removerMidia() {
-        Scanner e = new Scanner(System.in);
-        System.out.println("Digite o título da midia que deseja remover: ");
-        String titulo = null;
-        titulo = ValidarEntradaDeDados.nextLine();
-        if (gerenciador.remover(titulo)) {
-            System.out.println("Removido com sucesso!");
-            return true;
-        }
-        return false;
-    }
-
-    public String consultarMidia() {
-        String titulo = null;
-        titulo = ValidarEntradaDeDados.nextLine();
-        String dados = gerenciador.consultarMidia(titulo);
-        return dados;
-    }
-
     public boolean editarMidia() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void removerMidia() {
+        Scanner e = new Scanner(System.in);
+        String tituloRemover = null;
+        System.out.println("Digite o título da musica que deseja remover: ");
+        tituloRemover = Validação.ValidarEntradaDeDados.nextLine(tituloRemover);
+        if (gerenciador.remover(tituloRemover)) {
+            System.out.println("Removido com sucesso.");
+        }
+    }
+
+    public void consultarMidia() {
+        Scanner e = new Scanner(System.in);
+        String tituloConsulta = null;
+        System.out.println("Digite o título da midia que deseja consultar: ");
+        tituloConsulta = Validação.ValidarEntradaDeDados.nextLine(tituloConsulta);
+        Midia dados = gerenciador.consultarMidia(tituloConsulta);
+        if (dados == null) {
+            System.out.println("Musica inexistente.");
+        } else {
+            System.out.println(dados.toString());
+        }
     }
 
 }

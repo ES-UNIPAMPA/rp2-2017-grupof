@@ -5,21 +5,26 @@
  */
 package GUI;
 
+import Midias.Midia;
 import Validação.ValidarEntradaDeDados;
 import dominio.GerenciadorMidia;
 import Midias.Musica;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
  *
  * @author Matheus Montanha
  */
-public class GUIMusica implements IMenu {
+public class GUIMusica extends GUIMidia implements IMenu {
 
-    dominio.GerenciadorMidia gerenciador = new GerenciadorMidia(new ArrayList(), "musica.txt");
+    final String camArquivoTxT = "src/Arquivos/musica.txt";
+    dominio.GerenciadorMidia gerenciador;
     static String caminho = new java.io.File(".").getAbsolutePath();
+
+    public GUIMusica() {
+        gerenciador = new GerenciadorMidia(camArquivoTxT);
+        gerenciador.carregar();
+    }
 
     public void MenuMusica() {
         Scanner e = new Scanner(System.in);
@@ -40,12 +45,7 @@ public class GUIMusica implements IMenu {
                     removerMidia();
                     break;
                 case 3:
-                    String musica = consultarMidia();
-                    if (musica == null) {
-                        System.out.println("Musica inexistente.");
-                    } else {
-                        System.out.println(musica);
-                    }
+                    consultarMidia();
                     break;
                 case 4:
                     editarMidia();
@@ -60,67 +60,36 @@ public class GUIMusica implements IMenu {
     }
 
     @Override
-    public boolean criarMidia() {
+    public void criarMidia() {
         Scanner e = new Scanner(System.in);
-        boolean ficar;
-        String titulo = null, genero = null, idioma = null, descricao = null, autores = null, interpretes = null;
-        //double duracao = Double.MIN_VALUE;
-        int ano = Integer.MIN_VALUE;
-        String ano1 = null;
-        String duracao1 = null;
-        System.out.println("Digite o título da música: ");
+        String ano = null, interpretes = null, duracao = null, caminhoArquivo = null, titulo = null, descricao = null,
+                genero = null, autores = null, idioma = null;
+        System.out.println("Digite o título: ");
         titulo = ValidarEntradaDeDados.nextLine(titulo);
-        System.out.println("Digite o gênero da musica:");
+        System.out.println("Digite o gênero:");
         genero = ValidarEntradaDeDados.nextLine(genero);
-        System.out.println("Digite a descrição da musica: ");
+        System.out.println("Digite a descrição: ");
         descricao = ValidarEntradaDeDados.nextLine(descricao);
-        System.out.println("Digite autores da musica: ");
+        System.out.println("Digite autores: ");
         autores = ValidarEntradaDeDados.nextLine(autores);
-        System.out.println("Digite o ano da musica: ");
-        ano1 = ValidarEntradaDeDados.nextInt(ano1);
-        System.out.println("Digite o interprete da musica: ");
-        interpretes = ValidarEntradaDeDados.nextLine(interpretes);
-        System.out.println("Digite a duração da masica: ");
-        duracao1 = ValidarEntradaDeDados.nextDouble(duracao1);
         System.out.println("Digite o idioma: ");
         idioma = ValidarEntradaDeDados.nextLine(idioma);
-        Musica musica = new Musica(caminho, titulo, genero, idioma, descricao, autores, ano1, interpretes, duracao1);
+        System.out.println("Digite o ano da musica: ");
+        ano = ValidarEntradaDeDados.nextInt(ano);
+        System.out.println("Digite os interpretes da musica: ");
+        interpretes = ValidarEntradaDeDados.nextLine(interpretes);
+        System.out.println("Digite a duração da sua musica: ");
+        duracao = ValidarEntradaDeDados.nextDouble(duracao);
+        Musica musica = new Musica(caminho, titulo, genero, idioma, descricao, autores, ano, interpretes, duracao);
         if (gerenciador.adicionarMidia(musica)) {
             System.out.println("Registrado com sucesos.");
-            gerenciador.carregar(musica);
-            return true;
 
         }
-        return false;
-    }
-
-    @Override
-    public boolean removerMidia() {
-        Scanner e = new Scanner(System.in);
-        System.out.println("Digite o título da midia que deseja remover: ");
-        String titulo = null;
-        String caminho = "";
-        titulo = ValidarEntradaDeDados.nextLine(titulo);
-        if (gerenciador.remover(titulo)) {
-            System.out.println("Removido com sucesso!");
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public String consultarMidia() {
-        Scanner e = new Scanner(System.in);
-        String titulo = null;
-        titulo = ValidarEntradaDeDados.nextLine(titulo);
-        String dados = gerenciador.consultarMidia(titulo);
-        return dados;
     }
 
     @Override
     public boolean editarMidia() {
         Scanner e = new Scanner(System.in);
-
         boolean ficar;
         String titulo = null, genero = null, idioma = null, descricao = null, autores = null, interpretes = null;
         Musica musica = new Musica(caminho, titulo, genero, idioma, descricao, autores, genero, interpretes, descricao);
@@ -181,11 +150,33 @@ public class GUIMusica implements IMenu {
                 musica.setAno(ano1);
             }
         }
-        Musica musicaEditar = new Musica(caminho, titulo, genero, idioma, descricao, autores, genero, interpretes, descricao);
-        if (gerenciador.editarMidia(tituloEditar, musicaEditar)) {
+        if (gerenciador.editarMidia(tituloEditar, musica)) {
             System.out.println("Editado com sucesso.");
             return true;
         }
         return false;
+    }
+
+    public void removerMidia() {
+        Scanner e = new Scanner(System.in);
+        String titulo = null;
+        System.out.println("Digite o título da musica que deseja remover: ");
+        titulo = Validação.ValidarEntradaDeDados.nextLine(titulo);
+        if (gerenciador.remover(titulo)) {
+            System.out.println("Removido com sucesso.");
+        }
+    }
+
+    public void consultarMidia() {
+        Scanner e = new Scanner(System.in);
+        String titulo = null;
+        System.out.println("Digite o título da midia que deseja consultar: ");
+        titulo = Validação.ValidarEntradaDeDados.nextLine(titulo);
+        Midia dados = gerenciador.consultarMidia(titulo);
+        if (dados == null) {
+            System.out.println("Musica inexistente.");
+        } else {
+            System.out.println(dados.toString());
+        }
     }
 }

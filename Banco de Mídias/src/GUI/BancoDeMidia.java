@@ -23,8 +23,8 @@ public class BancoDeMidia {
             opcao = Validação.ValidarEntradaDeDados.validarInteiro(opcao);
             switch (opcao) {
                 case 1:
-                //GUIMusica menuMusica = new GUIMusica();
-                //menuMusica.MenuMusica();
+                    GUIMusica menuMusica = new GUIMusica();
+                    menuMusica.MenuMusica();
                 case 2:
                     GUIEbook menuEbook = new GUIEbook();
                     menuEbook.MenuEbook();

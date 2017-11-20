@@ -32,7 +32,6 @@ public class GerenciadorMidia {
     /**
      * Método construtor para inicializar a list
      *
-     * @param listaMidia recebido para criar a list do tipo desejada
      * @param caminho
      */
     public GerenciadorMidia(String caminho) {
@@ -59,9 +58,15 @@ public class GerenciadorMidia {
      * False;
      */
     public boolean remover(String titulo) {
-        Ebook novo = new Ebook(titulo);
-        listaMidia.remove(novo);
-        return salvar();
+        //Midia novo = new Midia(titulo);
+        //listaMidia.remove(novo);
+        for (Midia midia : listaMidia) {
+            if (midia.getTitulo().equalsIgnoreCase(titulo)) {
+                listaMidia.remove(midia);
+                return salvar();
+            }
+        }
+        return false;
     }
 
     /**
@@ -75,6 +80,7 @@ public class GerenciadorMidia {
         for (int i = 0; i < listaMidia.size(); i++) {
             if (listaMidia.get(i).getTitulo().equalsIgnoreCase(titulo)) {
                 listaMidia.set(i, novaMidia);
+                salvar();
                 return true;
             }
         }
@@ -87,15 +93,13 @@ public class GerenciadorMidia {
      * @param titulo para saber qual musica deve retornar
      * @return retorna uma String com a midia desejada
      */
-    public String consultarMidia(String titulo) {
-        //ArrayList<Midia> consulta = new ArrayList<>();
-        String dados = null;
-        for (int i = 0; i < listaMidia.size(); i++) {
-            if (listaMidia.get(i).getTitulo().equals(titulo)) {
-                dados = listaMidia.get(i).toString() + "\n";
+    public Midia consultarMidia(String titulo) {
+        for (Midia midia : listaMidia) {
+            if (midia.getTitulo().equalsIgnoreCase(titulo)) {
+                return midia;
             }
         }
-        return dados;
+        return null;
     }
 
     /**
@@ -127,14 +131,15 @@ public class GerenciadorMidia {
             FileWriter escritorArquivo = new FileWriter(new File(caminho));
             escritorArquivo.write(String.valueOf(listaMidia.size()));
             escritorArquivo.write(novaLinha + novaLinha);
-
             for (Midia midia : listaMidia) {
                 escritorArquivo.write(midia.toFile());
-                escritorArquivo.write(novaLinha + " " +novaLinha);
+                escritorArquivo.write(novaLinha + " " + novaLinha);
             }
             escritorArquivo.close();
+
         } catch (IOException ex) {
-            Logger.getLogger(GerenciadorMidia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GerenciadorMidia.class
+                    .getName()).log(Level.SEVERE, null, ex);
             return false;
         }
         return true;
@@ -144,30 +149,32 @@ public class GerenciadorMidia {
         File arquivo;
         arquivo = new File(caminho);
         if (arquivo.exists()) {
-
             ArrayList<String> dados = new ArrayList();
             try {
                 FileReader fileReader = new FileReader(arquivo);
                 BufferedReader buffR = new BufferedReader(fileReader);
                 String linhas;
-
                 buffR.readLine();
                 buffR.readLine();
-
                 int cont = 0;
                 while ((linhas = buffR.readLine()) != null) {
                     if (!linhas.equals(" ")) {
                         dados.add(linhas);
+                        cont++;
                     } else {
                         montarMidia(dados, arquivo);
+                        cont = 0;
                     }
                 }
 
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(GerenciadorMidia.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GerenciadorMidia.class
+                        .getName()).log(Level.SEVERE, null, ex);
                 return false;
+
             } catch (IOException ex) {
-                Logger.getLogger(GerenciadorMidia.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GerenciadorMidia.class
+                        .getName()).log(Level.SEVERE, null, ex);
                 return false;
             }
         }
