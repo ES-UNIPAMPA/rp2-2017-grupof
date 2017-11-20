@@ -82,8 +82,42 @@ public class ValidarEntradaDeDados {
         return numero;
     }
 
-    public static String entradaEnter() {
-        return null;
+    public static String entradaEnterTexto(String texto) {
+        boolean ficar;
+        do {
+            Scanner e = new Scanner(System.in);
+            ficar = false;
+            texto = e.nextLine();
+            texto = texto.trim();
+            if (texto == null || texto.equals(" ")) {
+                ficar = true;
+                System.out.println("Formato incorreto. Digite novamente: ");
+            } else {
+                Pattern pattern = Pattern.compile("[0-9]");
+                Matcher matcher = pattern.matcher(texto);
+                if (matcher.find()) {
+                    ficar = true;
+                    System.out.println("Formato incorreto. Digite novamente: ");
+                }
+            }
+        } while (ficar);
+        return texto;
 
+    }
+
+    public static String entradaEnterNumero(String texto) {
+        Scanner e = new Scanner(System.in);
+        boolean ficar;
+        do {
+            ficar = false;
+            texto = e.nextLine();
+            Pattern pattern = Pattern.compile("[a-z, A-Z]");
+            Matcher matcher = pattern.matcher(texto);
+            if (matcher.find() || texto.equals(" ")) {
+                ficar = true;
+                System.out.println("O campo não pode ser em branco ou conter letras. Digite novamente: ");
+            }
+        } while (ficar);
+        return texto;
     }
 }

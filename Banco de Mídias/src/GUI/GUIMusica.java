@@ -98,49 +98,49 @@ public class GUIMusica extends GUIMidia implements IMenu {
         if (gerenciador.verificarMidia(tituloEditar)) {
             System.out.println("Digite o novo titulo da musica: ");
             System.out.println("[TECLE ENTER PARA IGNORAR]");
-            titulo = e.nextLine();
+            titulo = ValidarEntradaDeDados.entradaEnterTexto(titulo);
             if (titulo.equals("")); else {
                 musica.setTitulo(titulo);
             }
             System.out.println("Digite o novo genero da musica: ");
             System.out.println("[TECLE ENTER PARA IGNORAR]");
-            genero = e.nextLine();
+            genero = ValidarEntradaDeDados.entradaEnterTexto(genero);
             if (genero.equals("")); else {
                 musica.setGenero(genero);
             }
             System.out.println("Digite o novo idioma da musica: ");
             System.out.println("[TECLE ENTER PARA IGNORAR]");
-            idioma = e.nextLine();
+            idioma = ValidarEntradaDeDados.entradaEnterTexto(idioma);
             if (idioma.equals("")); else {
                 musica.setIdioma(idioma);
             }
             System.out.println("Digite a nova descrição da musica: ");
             System.out.println("[TECLE ENTER PARA IGNORAR]");
-            descricao = e.nextLine();
+            descricao = ValidarEntradaDeDados.entradaEnterTexto(descricao);
             if (descricao.equals("")); else {
                 musica.setDescricao(descricao);
             }
             System.out.println("Digite a nova duração da musica: ");
             System.out.println("[TECLE ENTER PARA IGNORAR]");
-            duracao = e.nextLine();
+            duracao = ValidarEntradaDeDados.entradaEnterNumero(duracao);
             if (duracao.equals("")); else {
                 musica.setDuracao(duracao);
             }
             System.out.println("Digite os novos autores da musica: ");
             System.out.println("[TECLE ENTER PARA IGNORAR]");
-            autores = e.nextLine();
+            autores = ValidarEntradaDeDados.entradaEnterTexto(autores);
             if (autores.equals("")); else {
                 musica.setAutores(autores);
             }
             System.out.println("Digite o novo interprete: ");
             System.out.println("[TECLE ENTER PARA IGNORAR]");
-            interpretes = e.nextLine();
+            interpretes = ValidarEntradaDeDados.entradaEnterTexto(interpretes);
             if (interpretes.equals("")); else {
                 musica.setInterpretes(interpretes);
             }
             System.out.println("Digite o novo ano: ");
             System.out.println("[TECLE ENTER PARA IGNORAR]");
-            ano = e.nextLine();
+            ano = ValidarEntradaDeDados.entradaEnterNumero(ano);
             if (ano.equals("")); else {
                 musica.setAno(ano);
             }
