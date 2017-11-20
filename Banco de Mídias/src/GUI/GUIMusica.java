@@ -83,7 +83,6 @@ public class GUIMusica extends GUIMidia implements IMenu {
         Musica musica = new Musica(caminho, titulo, genero, idioma, descricao, autores, ano, interpretes, duracao);
         if (gerenciador.adicionarMidia(musica)) {
             System.out.println("Registrado com sucesos.");
-
         }
     }
 
@@ -91,13 +90,11 @@ public class GUIMusica extends GUIMidia implements IMenu {
     public boolean editarMidia() {
         Scanner e = new Scanner(System.in);
         boolean ficar;
-        String titulo = null, genero = null, idioma = null, descricao = null, autores = null, interpretes = null;
-        Musica musica = new Musica(caminho, titulo, genero, idioma, descricao, autores, genero, interpretes, descricao);
-        double duracao = Double.MIN_VALUE;
-        int ano = Integer.MIN_VALUE;
+        String titulo = null, genero = null, idioma = null, descricao = null, autores = null, interpretes = null, duracao = null, ano = null;
         System.out.println("Digite o título da musica que deseja editar: ");
         String tituloEditar = null;
         tituloEditar = ValidarEntradaDeDados.nextLine(tituloEditar);
+        Musica musica = (Musica) gerenciador.consultarMidia(tituloEditar);
         if (gerenciador.verificarMidia(tituloEditar)) {
             System.out.println("Digite o novo titulo da musica: ");
             System.out.println("[TECLE ENTER PARA IGNORAR]");
@@ -125,10 +122,9 @@ public class GUIMusica extends GUIMidia implements IMenu {
             }
             System.out.println("Digite a nova duração da musica: ");
             System.out.println("[TECLE ENTER PARA IGNORAR]");
-            //duracao = e.nextDouble();
-            String duracao1 = e.nextLine();
-            if (duracao1.equals("")); else {
-                musica.setDuracao(duracao1);
+            duracao = e.nextLine();
+            if (duracao.equals("")); else {
+                musica.setDuracao(duracao);
             }
             System.out.println("Digite os novos autores da musica: ");
             System.out.println("[TECLE ENTER PARA IGNORAR]");
@@ -144,10 +140,9 @@ public class GUIMusica extends GUIMidia implements IMenu {
             }
             System.out.println("Digite o novo ano: ");
             System.out.println("[TECLE ENTER PARA IGNORAR]");
-            //ano = e.next();
-            String ano1 = e.nextLine();
-            if (ano1.equals("")); else {
-                musica.setAno(ano1);
+            ano = e.nextLine();
+            if (ano.equals("")); else {
+                musica.setAno(ano);
             }
         }
         if (gerenciador.editarMidia(tituloEditar, musica)) {
@@ -159,20 +154,20 @@ public class GUIMusica extends GUIMidia implements IMenu {
 
     public void removerMidia() {
         Scanner e = new Scanner(System.in);
-        String titulo = null;
+        String tituloRemover = null;
         System.out.println("Digite o título da musica que deseja remover: ");
-        titulo = Validação.ValidarEntradaDeDados.nextLine(titulo);
-        if (gerenciador.remover(titulo)) {
+        tituloRemover = Validação.ValidarEntradaDeDados.nextLine(tituloRemover);
+        if (gerenciador.remover(tituloRemover)) {
             System.out.println("Removido com sucesso.");
         }
     }
 
     public void consultarMidia() {
         Scanner e = new Scanner(System.in);
-        String titulo = null;
+        String tituloConsulta = null;
         System.out.println("Digite o título da midia que deseja consultar: ");
-        titulo = Validação.ValidarEntradaDeDados.nextLine(titulo);
-        Midia dados = gerenciador.consultarMidia(titulo);
+        tituloConsulta = Validação.ValidarEntradaDeDados.nextLine(tituloConsulta);
+        Midia dados = gerenciador.consultarMidia(tituloConsulta);
         if (dados == null) {
             System.out.println("Musica inexistente.");
         } else {
