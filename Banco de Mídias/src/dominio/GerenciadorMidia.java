@@ -80,7 +80,7 @@ public class GerenciadorMidia {
         for (int i = 0; i < listaMidia.size(); i++) {
             if (listaMidia.get(i).getTitulo().equalsIgnoreCase(titulo)) {
                 listaMidia.set(i, novaMidia);
-                return carregar();
+                return true;
             }
         }
         return false;

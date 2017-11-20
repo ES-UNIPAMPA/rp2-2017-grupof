@@ -88,7 +88,7 @@ public class ValidarEntradaDeDados {
             Scanner e = new Scanner(System.in);
             ficar = false;
             texto = e.nextLine();
-            texto = texto.trim();
+            //texto = texto.trim();
             if (texto == null || texto.equals(" ")) {
                 ficar = true;
                 System.out.println("Formato incorreto. Digite novamente: ");
