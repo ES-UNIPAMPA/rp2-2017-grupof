@@ -5,15 +5,13 @@
  */
 package GUI;
 
-import Midias.Midia;
-
 /**
  *
  * @author Matheus Montanha
  */
 public interface IMenu {
 
-    public boolean criarMidia();
+    public void criarMidia();
 
     public boolean removerMidia();
 

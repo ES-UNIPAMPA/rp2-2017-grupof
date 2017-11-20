@@ -55,33 +55,33 @@ public class Ebook extends Midia {
     @Override
     public String toString() {
         String dados;
-        dados = "Caminho do Arquivo: " + this.CaminhoDoArquivo + "\n" + "Titulo: " + this.titulo + "\n" + "Descrição: " + this.descricao + "\n" + "Genero: " + this.genero + "\n" + "Autores: " + this.autores + "\n" + "Idioma: " + this.idioma + "\n" + "Número de Páginas: " + this.numPaginas + "\n" + "Editora: " + this.editora + "\n" + "Local: " + this.local + "\n" + "Ano: " + this.ano;
+        dados = "1. Caminho do Arquivo: " + this.CaminhoDoArquivo + "\n" + "2. Titulo: " + this.titulo + "\n" + "3. Descrição: " + this.descricao + "\n" + "4. Genero: " + this.genero + "\n" + "5. Autores: " + this.autores + "\n" + "6. Idioma: " + this.idioma + "\n" + "7. Número de Páginas: " + this.numPaginas + "\n" + "8. Editora: " + this.editora + "\n" + "9. Local: " + this.local + "\n" + "10. Ano: " + this.ano;
         return dados;
     }
     
     @Override
     public String toFile() {
         String dados;
-        dados =this.CaminhoDoArquivo + "\n" + this.titulo + "\n" +this.descricao + "\n" + this.genero + "\n" + this.autores + "\n" + this.idioma + "\n" + this.numPaginas + "\n" + this.editora + "\n" + this.local + "\n" + this.ano;
+        dados = super.toFile() + "\n" + this.numPaginas + "\n" + this.editora + "\n" + this.local;
         return dados;
     }
     
-    public String[] toArrayString() {
-        String[] dados = new String[10];
-        dados[0] = this.CaminhoDoArquivo;
-        dados[1] = this.titulo;
-        dados[2] = this.descricao;
-        dados[3] = this.genero;
-        dados[4] = this.autores;
-        dados[5] = this.idioma;
-        dados[6] = this.numPaginas;
-        dados[7] = this.editora;
-        dados[8] = this.local;
-        dados[9] = this.ano;
-
-        return dados;
-
-    }
+//    public String[] toArrayString() {
+//        String[] dados = new String[10];
+//        dados[0] = this.CaminhoDoArquivo;
+//        dados[1] = this.titulo;
+//        dados[2] = this.descricao;
+//        dados[3] = this.genero;
+//        dados[4] = this.autores;
+//        dados[5] = this.idioma;
+//        dados[6] = this.numPaginas;
+//        dados[7] = this.editora;
+//        dados[8] = this.local;
+//        dados[9] = this.ano;
+//
+//        return dados;
+//
+//    }
 
     //substitui o equals para comparar o titulo dos obj
     @Override

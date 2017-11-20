@@ -41,6 +41,14 @@ public class Musica extends Midia {
         dados = this.CaminhoDoArquivo + "\n" +this.titulo + "\n" + this.genero + "\n" + this.idioma + "\n" + this.descricao + "\n" + this.autores + "\n" + this.ano + "\n" + this.interpretes + "\n" + this.duracao;
         return dados;
     }
+    
+    @Override
+    public String toFile() {
+        String dados;
+        dados = super.toFile() + "\n" + this.interpretes + "\n" + this.duracao;
+        return dados;
+    }
+    
     public String[] ArraytoString() {
         String[] dados = new String[9];
         dados[0] = this.CaminhoDoArquivo;

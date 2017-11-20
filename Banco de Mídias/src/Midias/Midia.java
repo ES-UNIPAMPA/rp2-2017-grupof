@@ -95,6 +95,7 @@ public class Midia {
         return this.getTitulo().equals(outraMidia.getTitulo());
     }
     public String toFile(){
-        return "";
+        String dados = this.CaminhoDoArquivo + "\n" + this.titulo + "\n" + this.descricao + "\n" + this.genero + "\n" + this.autores + "\n" + this.idioma + "\n" + this.ano;
+        return dados;
     }
 }

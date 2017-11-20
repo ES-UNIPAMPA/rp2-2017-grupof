@@ -8,6 +8,8 @@ package dominio;
 
 import Midias.Ebook;
 import Midias.Midia;
+import Midias.Musica;
+import Midias.Podcast;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,7 +17,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,7 +26,7 @@ import java.util.logging.Logger;
  */
 public class GerenciadorMidia {
 
-    private static List<Midia> listaMidia;
+    private ArrayList<Midia> listaMidia;
     private final String caminho;
 
     /**
@@ -34,8 +35,8 @@ public class GerenciadorMidia {
      * @param listaMidia recebido para criar a list do tipo desejada
      * @param caminho
      */
-    public GerenciadorMidia(List listaMidia, String caminho) {
-        GerenciadorMidia.listaMidia = listaMidia;
+    public GerenciadorMidia(String caminho) {
+        this.listaMidia = new ArrayList();
         this.caminho = caminho;
     }
 
@@ -126,9 +127,10 @@ public class GerenciadorMidia {
             FileWriter escritorArquivo = new FileWriter(new File(caminho));
             escritorArquivo.write(String.valueOf(listaMidia.size()));
             escritorArquivo.write(novaLinha + novaLinha);
-            String[] dados;
+
             for (Midia midia : listaMidia) {
                 escritorArquivo.write(midia.toFile());
+                escritorArquivo.write(novaLinha + " " +novaLinha);
             }
             escritorArquivo.close();
         } catch (IOException ex) {
@@ -138,35 +140,101 @@ public class GerenciadorMidia {
         return true;
     }
 
-    public boolean carregar(Midia midia) {
-        listaMidia = new ArrayList();
-        File arquivo = new File(caminho);
-        try {
-            FileReader fileReader = new FileReader(arquivo);
-            BufferedReader buffR = new BufferedReader(fileReader);
-            String linhas;
-            String[] dados = new String[10];
-            int cont = 0;
-            buffR.readLine();
-            buffR.readLine();
-            while ((linhas = buffR.readLine()) != null) {
-                if (!linhas.equals("")) {
-                    dados[cont] = linhas;
-                    cont++;
-                } else {
-                    adicionarMidia(midia);
-                    cont = 0;
-                }
-            }
+    public boolean carregar() {
+        File arquivo;
+        arquivo = new File(caminho);
+        if (arquivo.exists()) {
 
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(GerenciadorMidia.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        } catch (IOException ex) {
-            Logger.getLogger(GerenciadorMidia.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
+            ArrayList<String> dados = new ArrayList();
+            try {
+                FileReader fileReader = new FileReader(arquivo);
+                BufferedReader buffR = new BufferedReader(fileReader);
+                String linhas;
+
+                buffR.readLine();
+                buffR.readLine();
+
+                int cont = 0;
+                while ((linhas = buffR.readLine()) != null) {
+                    if (!linhas.equals(" ")) {
+                        dados.add(linhas);
+                    } else {
+                        montarMidia(dados, arquivo);
+                    }
+                }
+
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(GerenciadorMidia.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
+            } catch (IOException ex) {
+                Logger.getLogger(GerenciadorMidia.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
+            }
         }
         return true;
+    }
+
+    private void montarMidia(ArrayList<String> dados, File arquivo) {
+
+        switch (arquivo.getName()) {
+            case "ebook.txt":
+                montarEbook(dados);
+                break;
+            case "musica.txt":
+                montarMusica(dados);
+                break;
+            case "podcast.txt":
+                montarPodcast(dados);
+                break;
+            default:
+                System.out.println("Nome de arquivo inválido!");
+                break;
+        }
+
+    }
+
+    private void montarEbook(ArrayList<String> dados) {
+        Midia novo = new Ebook(dados.get(0),
+                dados.get(1),
+                dados.get(2),
+                dados.get(3),
+                dados.get(4),
+                dados.get(5),
+                dados.get(6),
+                dados.get(7),
+                dados.get(8),
+                dados.get(9));
+
+        adicionarMidia(novo);
+
+    }
+
+    private void montarMusica(ArrayList<String> dados) {
+        Midia novo = new Musica(dados.get(0),
+                dados.get(1),
+                dados.get(2),
+                dados.get(3),
+                dados.get(4),
+                dados.get(5),
+                dados.get(6),
+                dados.get(7),
+                dados.get(8));
+
+        adicionarMidia(novo);
+
+    }
+
+    private void montarPodcast(ArrayList<String> dados) {
+        Midia novo = new Podcast(dados.get(0),
+                dados.get(1),
+                dados.get(2),
+                dados.get(3),
+                dados.get(4),
+                dados.get(5),
+                dados.get(6));
+
+        adicionarMidia(novo);
+
     }
 
 }

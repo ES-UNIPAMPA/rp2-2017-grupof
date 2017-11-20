@@ -16,13 +16,15 @@ import java.util.regex.Pattern;
  */
 public class ValidarEntradaDeDados {
 
-    public static String nextLine(String texto) {
-        boolean ficar;
+    public static String nextLine() {
+        String texto;
+        boolean ficar = true;
         do {
             Scanner e = new Scanner(System.in);
             ficar = false;
             texto = e.nextLine();
-            if (texto == null || " ".equals(texto) || texto.equals("")) {
+            texto = texto.trim();
+            if (texto == null || texto.equals("")) {
                 ficar = true;
                 System.out.println("Formato incorreto. Digite novamente: ");
             } else {
@@ -37,12 +39,14 @@ public class ValidarEntradaDeDados {
         return texto;
     }
 
-    public static String nextInt(String numero) {
+    public static String nextInt() {
+        String numero = "";
         Scanner e = new Scanner(System.in);
         boolean ficar;
         do {
             try {
                 numero = e.nextLine();
+                // e.nextLine();
                 Integer.parseInt(numero);
                 return numero;
             } catch (NumberFormatException e5) {

@@ -5,9 +5,6 @@
  */
 package GUI;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 /**
  *
  * @author Matheus Montanha
@@ -15,7 +12,6 @@ import java.util.Scanner;
 public class BancoDeMidia {
 
     public void MenuPrincipal() {
-        Scanner e = new Scanner(System.in);
         int opcao = Integer.MIN_VALUE;
         do {
             System.out.println("Bem-vindo. Escolha a midia que deseja: ");
@@ -27,11 +23,11 @@ public class BancoDeMidia {
             opcao = Validação.ValidarEntradaDeDados.validarInteiro(opcao);
             switch (opcao) {
                 case 1:
-                    GUIMusica menuMusica = new GUIMusica();
-                    menuMusica.MenuMusica();
+                //GUIMusica menuMusica = new GUIMusica();
+                //menuMusica.MenuMusica();
                 case 2:
-                //GUIEbook menuEbook = new GUIEbook();
-                // menuEbook.MenuEbook();
+                    GUIEbook menuEbook = new GUIEbook();
+                    menuEbook.MenuEbook();
                 case 3:
                 case 4:
                 case 0:
