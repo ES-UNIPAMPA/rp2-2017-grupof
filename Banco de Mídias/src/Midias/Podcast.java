@@ -31,6 +31,20 @@ public class Podcast extends Midia {
         return dados;
     }
     
+    
+    @Override
+    public String toString(){
+        String dados = this.CaminhoDoArquivo + "\n" + this.titulo + "\n" + this.genero + "\n" + this.idioma + "\n" + this.descricao + "\n" + this.autores + "\n" + this.ano;
+        return dados;
+    }
+     @Override
+    public String toFile() {
+        String dados;
+        dados = super.toFile();
+        return dados;
+    }
+    
+    
     @Override
     public boolean equals(Object o) {
         Podcast outroPodcast = (Podcast) o;
