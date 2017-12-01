@@ -1,6 +1,7 @@
 package Midias;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -78,4 +79,32 @@ public class Musica extends Midia implements Comparable<Musica> {
         }
         return 0;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Musica other = (Musica) obj;
+        if (!Objects.equals(this.interpretes, other.interpretes)) {
+            return false;
+        }
+        if (!Objects.equals(this.duracao, other.duracao)) {
+            return false;
+        }
+        return true;
+    }
+    
 }

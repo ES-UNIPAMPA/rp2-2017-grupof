@@ -1,6 +1,7 @@
 package Midias;
 
 import java.util.List;
+import java.util.Objects;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -95,12 +96,13 @@ public class Midia {
         this.ano = ano;
     }
 
+    /*
     @Override
     public boolean equals(Object o) {
         Midia outraMidia = (Midia) o;
         return this.getTitulo().equals(outraMidia.getTitulo());
     }
-
+     */
     public String toFile() {
         String dados = this.CaminhoDoArquivo + "\n" + this.titulo + "\n" + this.descricao + "\n" + this.genero + "\n" + this.autores + "\n" + this.idioma + "\n" + this.ano;
         return dados;
@@ -114,4 +116,47 @@ public class Midia {
     public boolean equalsTitulo(String nome) {
         return this.titulo.equalsIgnoreCase(nome);
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Midia other = (Midia) obj;
+        if (!Objects.equals(this.CaminhoDoArquivo, other.CaminhoDoArquivo)) {
+            return false;
+        }
+        if (!Objects.equals(this.titulo, other.titulo)) {
+            return false;
+        }
+        if (!Objects.equals(this.genero, other.genero)) {
+            return false;
+        }
+        if (!Objects.equals(this.idioma, other.idioma)) {
+            return false;
+        }
+        if (!Objects.equals(this.descricao, other.descricao)) {
+            return false;
+        }
+        if (!Objects.equals(this.autores, other.autores)) {
+            return false;
+        }
+        if (!Objects.equals(this.ano, other.ano)) {
+            return false;
+        }
+        return true;
+    }
+
 }

@@ -22,7 +22,6 @@ public class GUIMusica extends GUIMidia implements IMenu {
     final String camArquivoTxT = "src/Arquivos/musica.txt";
     dominio.GerenciadorMidia gerenciador;
     static String caminho = new java.io.File(".").getAbsolutePath();
-    List<Musica> listaRetorno = new ArrayList<>();
 
     public GUIMusica() {
         gerenciador = new GerenciadorMidia(camArquivoTxT);
@@ -164,26 +163,48 @@ public class GUIMusica extends GUIMidia implements IMenu {
     }
 
     public void removerMidia() {
+        List<Midia> listaPegaRetorno;
         Scanner e = new Scanner(System.in);
         String tituloRemover = null;
+        int id;
         System.out.println("Digite o título da musica que deseja remover: ");
         tituloRemover = Validação.ValidarEntradaDeDados.nextLine(tituloRemover);
-        if (gerenciador.remover(tituloRemover)) {
-            System.out.println("Removido com sucesso.");
+        listaPegaRetorno = gerenciador.consultarMidia(tituloRemover);
+        int contador = 0;
+        for (Midia midia : listaPegaRetorno) {
+            System.out.println("ID: " + contador + "\n" + midia.toString());
+            contador++;
+        }
+        String idTemp = null;
+        System.out.println("ESSAS SÃO AS MUSICAS COM O TÍTULO INFORMADO.");
+        System.out.println("Idêntifique o ID da musica que deseja remover e informe-o: ");
+        idTemp = ValidarEntradaDeDados.nextInt(idTemp);
+        id = Integer.parseInt(idTemp);
+        if (id <= listaPegaRetorno.size() - 1) {
+            Midia musicaRemover = listaPegaRetorno.get(id);
+            if (gerenciador.remover(musicaRemover)) {
+                System.out.println("Removido com sucesso.");
+            } else {
+                System.out.println("Não foi possivel remover.");
+            }
+        } else {
+            System.out.println("ID inexistente. Tente novamente.");
         }
     }
 
     public void consultarMidia() {
         Scanner e = new Scanner(System.in);
+        List<Midia> listaPegaRetorno;
         String tituloConsulta = null;
         System.out.println("Digite o título da midia que deseja consultar: ");
         tituloConsulta = Validação.ValidarEntradaDeDados.nextLine(tituloConsulta);
-        Midia dados = gerenciador.consultarMidia(tituloConsulta);
-        if (dados == null) {
-            System.out.println("Musica inexistente.");
-        } else {
-            System.out.println(dados.toString());
+        listaPegaRetorno = gerenciador.consultarMidia(tituloConsulta);
+        for (Midia midia : listaPegaRetorno) {
+            if (listaPegaRetorno != null) {
+                System.out.println(midia.toString());
+            } else {
+                System.out.println("Musica inexistente.");
+            }
         }
-
     }
 }

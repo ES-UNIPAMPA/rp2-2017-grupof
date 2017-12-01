@@ -26,7 +26,7 @@ import java.util.logging.Logger;
  * @author Matheus Montanha
  */
 public class GerenciadorMidia {
-
+    
     private ArrayList<Midia> listaMidia;
     private final String caminho;
 
@@ -57,16 +57,14 @@ public class GerenciadorMidia {
     /**
      * Método para excluir uma mídia.
      *
-     * @param titulo saber qual midia deseja remover
+     * @param midias
      * @return True caso foi removido com sucesso, caso contrário, retorna
      * False;
      */
-    public boolean remover(String titulo) {
-        //Midia novo = new Midia(titulo);
-        //listaMidia.remove(novo);
+    public boolean remover(Midia midias) {
         for (Midia midia : listaMidia) {
-            if (midia.getTitulo().equalsIgnoreCase(titulo)) {
-                listaMidia.remove(midia);
+            if (midia.equals(midias)) {
+                listaMidia.remove(midia); 
                 return salvar();
             }
         }
@@ -97,13 +95,14 @@ public class GerenciadorMidia {
      * @param midiaTitulo
      * @return retorna uma String com a midia desejada
      */
-    public Midia consultarMidia(String midiaTitulo) {
+    public List consultarMidia(String midiaTitulo) {
+        ArrayList<Midia> listaRetorno = new ArrayList<>();
         for (Midia midia : listaMidia) {
             if (midia.getTitulo().equalsIgnoreCase(midiaTitulo)) {
-                return midia;
+                listaRetorno.add(midia);
             }
         }
-        return null;
+        return listaRetorno;
     }
 
     /**
@@ -120,7 +119,7 @@ public class GerenciadorMidia {
         }
         return false;
     }
-
+    
     public ArrayList retornaMidias() {
         ArrayList<Midia> listaTodos = new ArrayList<>();
         for (int i = 0; i < listaMidia.size(); i++) {
@@ -128,7 +127,7 @@ public class GerenciadorMidia {
         }
         return listaTodos;
     }
-
+    
     public boolean salvar() {
         String novaLinha = System.getProperty("line.separator");
         try {
@@ -140,7 +139,7 @@ public class GerenciadorMidia {
                 escritorArquivo.write(novaLinha + " " + novaLinha);
             }
             escritorArquivo.close();
-
+            
         } catch (IOException ex) {
             Logger.getLogger(GerenciadorMidia.class
                     .getName()).log(Level.SEVERE, null, ex);
@@ -148,7 +147,7 @@ public class GerenciadorMidia {
         }
         return true;
     }
-
+    
     public boolean carregar() {
         File arquivo;
         arquivo = new File(caminho);
@@ -167,12 +166,12 @@ public class GerenciadorMidia {
                         montarMidia(dados, arquivo);
                     }
                 }
-
+                
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(GerenciadorMidia.class
                         .getName()).log(Level.SEVERE, null, ex);
                 return false;
-
+                
             } catch (IOException ex) {
                 Logger.getLogger(GerenciadorMidia.class
                         .getName()).log(Level.SEVERE, null, ex);
@@ -181,9 +180,9 @@ public class GerenciadorMidia {
         }
         return true;
     }
-
+    
     private void montarMidia(ArrayList<String> dados, File arquivo) {
-
+        
         switch (arquivo.getName()) {
             case "ebook.txt":
                 montarEbook(dados);
@@ -198,9 +197,9 @@ public class GerenciadorMidia {
                 System.out.println("Nome de arquivo inválido!");
                 break;
         }
-
+        
     }
-
+    
     private void montarEbook(ArrayList<String> dados) {
         Midia novo = new Ebook(dados.get(0),
                 dados.get(1),
@@ -213,9 +212,9 @@ public class GerenciadorMidia {
                 dados.get(8),
                 dados.get(9));
         adicionarMidia(novo);
-
+        
     }
-
+    
     private void montarMusica(ArrayList<String> dados) {
         Midia novo = new Musica(dados.get(0),
                 dados.get(1),
@@ -229,7 +228,7 @@ public class GerenciadorMidia {
         listaMidia.add(novo);
         dados.clear();
     }
-
+    
     private void montarPodcast(ArrayList<String> dados) {
         Midia novo = new Podcast(dados.get(0),
                 dados.get(1),
@@ -239,9 +238,9 @@ public class GerenciadorMidia {
                 dados.get(5),
                 dados.get(6));
         adicionarMidia(novo);
-
+        
     }
-
+    
     public void ordenadorMusica(List listaMidia) {
         boolean houveTroca;
         do {
@@ -269,8 +268,8 @@ public class GerenciadorMidia {
                     houveTroca = true;
                 }
             }
-
+            
         } while (houveTroca);
     }
-
+    
 }
