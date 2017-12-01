@@ -5,6 +5,7 @@
  */
 package GUI;
 
+/*
 import Validação.ValidarEntradaDeDados;
 import dominio.GerenciadorMidia;
 import Midias.Midia;
@@ -15,6 +16,7 @@ import java.util.Scanner;
  *
  * @author roliv
  */
+ /*
 public class GUIEbook extends GUIMidia implements IMenu {
 
     GerenciadorMidia gerenciador;
@@ -104,3 +106,4 @@ public class GUIEbook extends GUIMidia implements IMenu {
     }
 
 }
+ */

@@ -5,6 +5,7 @@
  */
 package GUI;
 
+/*
 import Validação.ValidarEntradaDeDados;
 import dominio.GerenciadorMidia;
 import Midias.Midia;
@@ -15,6 +16,7 @@ import java.util.Scanner;
  *
  * @author AllissonChervenski
  */
+/*
 public class GUIPodcast extends GUIMidia implements IMenu {
 
     final String caminho = "src/Arquivos/podcast.txt";
@@ -146,3 +148,4 @@ public class GUIPodcast extends GUIMidia implements IMenu {
         }
     }
 }
+*/
