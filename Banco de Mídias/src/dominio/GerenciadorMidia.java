@@ -101,7 +101,6 @@ public class GerenciadorMidia {
                 listaRetorno.add(midia);
             }
         }
-        //salvar();
         return listaRetorno;
     }
 
