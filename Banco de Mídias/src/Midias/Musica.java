@@ -1,10 +1,12 @@
 package Midias;
 
+import java.util.List;
+
 /**
  *
  * @author Matheus Montanha
  */
-public class Musica extends Midia {
+public class Musica extends Midia implements Comparable<Musica> {
 
     private String interpretes;
     private String duracao;
@@ -18,7 +20,10 @@ public class Musica extends Midia {
     public Musica(String titulo) {
         super(titulo);
     }
-
+    public Musica(List lista){
+        super(lista); 
+    }
+    
     public String getInterpretes() {
         return interpretes;
     }
@@ -61,5 +66,16 @@ public class Musica extends Midia {
         dados[7] = this.interpretes;
         dados[8] = this.duracao;
         return dados;
+    }
+
+    @Override
+    public int compareTo(Musica o) {
+        if (Integer.parseInt(ano) > Integer.parseInt(o.ano)) {
+            return -1;
+        }
+        if (Integer.parseInt(ano) < Integer.parseInt(o.ano)) {
+            return 1;
+        }
+        return 0;
     }
 }

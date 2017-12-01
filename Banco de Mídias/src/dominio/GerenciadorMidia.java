@@ -17,6 +17,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -46,8 +47,11 @@ public class GerenciadorMidia {
      * @return True caso foi adicionado, caso contrário, retorna False
      */
     public boolean adicionarMidia(Midia novaMidia) {
-        listaMidia.add(novaMidia);
-        return salvar();
+        if (novaMidia != null) {
+            listaMidia.add(novaMidia);
+            return salvar();
+        }
+        return false;
     }
 
     /**
@@ -80,6 +84,7 @@ public class GerenciadorMidia {
         for (int i = 0; i < listaMidia.size(); i++) {
             if (listaMidia.get(i).getTitulo().equalsIgnoreCase(titulo)) {
                 listaMidia.set(i, novaMidia);
+                salvar();
                 return true;
             }
         }
@@ -89,13 +94,12 @@ public class GerenciadorMidia {
     /**
      * Método para consultar uma mídia desejada
      *
-     * @param titulo para saber qual musica deve retornar
+     * @param midiaTitulo
      * @return retorna uma String com a midia desejada
      */
-    public Midia consultarMidia(String titulo) {
+    public Midia consultarMidia(String midiaTitulo) {
         for (Midia midia : listaMidia) {
-            if (midia.getTitulo().equalsIgnoreCase(titulo)) {
-                salvar();
+            if (midia.getTitulo().equalsIgnoreCase(midiaTitulo)) {
                 return midia;
             }
         }
@@ -156,14 +160,11 @@ public class GerenciadorMidia {
                 String linhas;
                 buffR.readLine();
                 buffR.readLine();
-                int cont = 0;
                 while ((linhas = buffR.readLine()) != null) {
                     if (!linhas.equals(" ")) {
                         dados.add(linhas);
-                        cont++;
                     } else {
                         montarMidia(dados, arquivo);
-                        cont = 0;
                     }
                 }
 
@@ -211,7 +212,6 @@ public class GerenciadorMidia {
                 dados.get(7),
                 dados.get(8),
                 dados.get(9));
-
         adicionarMidia(novo);
 
     }
@@ -226,9 +226,8 @@ public class GerenciadorMidia {
                 dados.get(6),
                 dados.get(7),
                 dados.get(8));
-
-        adicionarMidia(novo);
-
+        listaMidia.add(novo);
+        dados.clear();
     }
 
     private void montarPodcast(ArrayList<String> dados) {
@@ -239,9 +238,39 @@ public class GerenciadorMidia {
                 dados.get(4),
                 dados.get(5),
                 dados.get(6));
-
         adicionarMidia(novo);
 
+    }
+
+    public void ordenadorMusica(List listaMidia) {
+        boolean houveTroca;
+        do {
+            houveTroca = false;
+            for (int i = 0; i < listaMidia.size() - 2; i++) {
+                Musica musica = (Musica) listaMidia.get(i);
+                Musica musica2 = (Musica) listaMidia.get(i + 1);
+                if (musica.compareTo(musica2) > 0) {
+                    Musica aux = (Musica) listaMidia.get(i);
+                    listaMidia.set(i, listaMidia.get(i + 1));
+                    listaMidia.set(i + 1, aux);
+                    houveTroca = true;
+                }
+            }
+            if (!houveTroca) {
+                break;
+            }
+            for (int i = listaMidia.size() - 2; i >= 0; i--) {
+                Musica musica = (Musica) listaMidia.get(i);
+                Musica musica2 = (Musica) listaMidia.get(i + 1);
+                if (musica.compareTo(musica2) > 0) {
+                    Musica aux = (Musica) listaMidia.get(i);
+                    listaMidia.set(i, listaMidia.get(i + 1));
+                    listaMidia.set(i + 1, aux);
+                    houveTroca = true;
+                }
+            }
+
+        } while (houveTroca);
     }
 
 }

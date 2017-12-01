@@ -1,5 +1,7 @@
 package Midias;
 
+import java.util.List;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -31,6 +33,10 @@ public class Midia {
 
     public Midia(String titulo) {
         this.titulo = titulo;
+    }
+
+    public Midia(List lista) {
+        List<Midia> listaMidia = lista;
     }
 
     public String getCaminhoDoArquivo() {
@@ -103,5 +109,9 @@ public class Midia {
     @Override
     public String toString() {
         return "";
+    }
+
+    public boolean equalsTitulo(String nome) {
+        return this.titulo.equalsIgnoreCase(nome);
     }
 }
