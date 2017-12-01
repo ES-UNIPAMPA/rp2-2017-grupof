@@ -36,6 +36,7 @@ public class GUIMusica extends GUIMidia implements IMenu {
             System.out.println("3 - Consultar musica.");
             System.out.println("4 - Editar musica.");
             System.out.println("5 - Voltar ao menu principal");
+            System.out.println("6 - Exibir todas as mídias.");
             System.out.println("O que deseja fazer?");
             opcao = ValidarEntradaDeDados.validarInteiro(opcao);
             switch (opcao) {
@@ -52,6 +53,9 @@ public class GUIMusica extends GUIMidia implements IMenu {
                     editarMidia();
                     break;
                 case 5:
+                    break;
+                case 6:
+                    exibir();
                     break;
                 default:
                     System.out.println("Opção inválida. Digite o número da opção desejada.");
@@ -232,6 +236,15 @@ public class GUIMusica extends GUIMidia implements IMenu {
             }
         } else {
             System.out.println("Musica inexistente.");
+        }
+    }
+
+    public void exibir() {
+        List<Midia> listaRetorno;
+        listaRetorno = gerenciador.exibir();
+        gerenciador.ordenadorMusica(listaRetorno);
+        for (Midia midia : listaRetorno) {
+            System.out.println(midia.toString());
         }
     }
 }
