@@ -159,7 +159,7 @@ public class Midia {
         return true;
     }
     
-    public int compareTo(Ebook o) {
+    public int compareTo(Midia o) {
         return this.titulo.compareToIgnoreCase(o.getTitulo());
     }
 

@@ -68,7 +68,8 @@ public class Ebook extends Midia {
         return dados;
     }
     
-    public int compareTo(Ebook o) {
+    @Override
+    public int compareTo(Midia o) {
         return this.titulo.compareToIgnoreCase(o.getTitulo());
     }
     

@@ -284,10 +284,10 @@ public class GerenciadorMidia {
         } while (houveTroca);
     }
 
-    public ArrayList<Midia> ordenadorEbook(ArrayList<Midia> lista) {
+    public List ordenadorEbook(List lista) {
 
-        ArrayList<Midia> esqueda = new ArrayList<>();
-        ArrayList<Midia> direita = new ArrayList<>();
+        List<Midia> esqueda = new ArrayList();
+        List<Midia> direita = new ArrayList();
         int meio;
 
         if (lista.size() == 1) {
@@ -296,11 +296,11 @@ public class GerenciadorMidia {
             meio = lista.size() / 2;
 
             for (int i = 0; i < meio; i++) {
-                esqueda.add(lista.get(i));
+                esqueda.add((Midia) lista.get(i));
             }
 
             for (int i = meio; i < lista.size(); i++) {
-                direita.add(lista.get(i));
+                direita.add((Midia) lista.get(i));
             }
 
             esqueda = ordenadorEbook(esqueda);
@@ -308,6 +308,7 @@ public class GerenciadorMidia {
 
             ordena(esqueda, direita, lista);
         }
+       // salvar();
         return lista;
     }
 
@@ -315,13 +316,13 @@ public class GerenciadorMidia {
         return listaMidia;
     }
 
-    private void ordena(ArrayList<Midia> esquerda, ArrayList<Midia> direita, ArrayList<Midia> lista) {
+    private void ordena(List<Midia> esquerda, List<Midia> direita, List lista) {
         int indiceEsquerda = 0;
         int indiceDireita = 0;
         int indiceLista = 0;
 
         while (indiceEsquerda < esquerda.size() && indiceDireita < direita.size()) {
-            if ((esquerda.get(indiceEsquerda).compareTo((Ebook) direita.get(indiceDireita))) > 0) {
+            if ((esquerda.get(indiceEsquerda).compareTo(direita.get(indiceDireita))) < 0) {
                 lista.set(indiceLista, esquerda.get(indiceEsquerda));
                 indiceEsquerda++;
             } else {
@@ -331,20 +332,34 @@ public class GerenciadorMidia {
             indiceLista++;
         }
 
-        ArrayList<Midia> sobra;
-        int indiceSobra;
-        if (indiceEsquerda >= esquerda.size()) {
-            sobra = direita;
-            indiceSobra = indiceDireita;
-        } else {
-            sobra = esquerda;
-            indiceSobra = indiceEsquerda;
-        }
+        while (indiceEsquerda < esquerda.size()) {
 
-        for (int i = indiceSobra; i < sobra.size(); i++) {
-            lista.set(indiceLista, sobra.get(i));
+            lista.set(indiceLista, esquerda.get(indiceEsquerda));
+            indiceEsquerda++;
+
             indiceLista++;
         }
+
+        while (indiceDireita < direita.size()) {
+            lista.set(indiceLista, direita.get(indiceDireita));
+            indiceDireita++;
+
+            indiceLista++;
+        }
+//        List sobra;
+//        int indiceSobra;
+//        if (indiceEsquerda >= esquerda.size()) {
+//            sobra = direita;
+//            indiceSobra = indiceDireita;
+//        } else {
+//            sobra = esquerda;
+//            indiceSobra = indiceEsquerda;
+//        }
+//
+//        for (int i = indiceSobra; i < sobra.size(); i++) {
+//            lista.set(indiceLista, sobra.get(i));
+//            indiceLista++;
+//        }
     }
 
     public void ordenadorPodcast(List listaMidia) {

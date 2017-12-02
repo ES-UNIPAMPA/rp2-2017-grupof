@@ -35,8 +35,7 @@ public class GUIEbook extends GUIMidia implements IMenu {
             System.out.println("2 - Excluir ebook.");
             System.out.println("3 - Consultar ebook.");
             System.out.println("4 - Editar ebook.");
-            System.out.println("5 - Ordenar lista por nome");
-            System.out.println("6 - Voltar ao menu principal");
+            System.out.println("5 - Voltar ao menu principal");
             System.out.println("O que deseja fazer?");
             opcao = Validação.ValidarEntradaDeDados.validarInteiro(opcao);
             switch (opcao) {
@@ -47,21 +46,19 @@ public class GUIEbook extends GUIMidia implements IMenu {
                     removerMidia();
                     break;
                 case 3:
-                    consultarMidia();
+                    //consultarMidia();
+                    ordenarMidia();
                     break;
                 case 4:
                     editarMidia();
                     break;
                 case 5:
-                    ordenarMidia();
-                    break;
-                case 6:
                     break;
                 default:
                     System.out.println("Opção inválida. Digite o número da opção desejada.");
                     break;
             }
-        } while (opcao != 6);
+        } while (opcao != 5);
     }
 
     @Override
@@ -219,6 +216,7 @@ public class GUIEbook extends GUIMidia implements IMenu {
         tituloConsulta = Validação.ValidarEntradaDeDados.nextLine(tituloConsulta);
         listaPegaRetorno = gerenciador.consultarMidia(tituloConsulta);
         if (!listaPegaRetorno.isEmpty()) {
+            gerenciador.ordenadorEbook(listaPegaRetorno);
             for (Midia midia : listaPegaRetorno) {
                 System.out.println(midia.toString());
             }
@@ -229,10 +227,11 @@ public class GUIEbook extends GUIMidia implements IMenu {
     }
 
     public void ordenarMidia() {
-        ArrayList<Midia> lista;
+        
         // lista = gerenciador.getListaMidia();
         System.out.println("Lista de Ebook ordenada com sucesso" + "\n");
-        //gerenciador.ordenadorEbook(lista).toString();
+        gerenciador.ordenadorEbook(gerenciador.getListaMidia());
+        gerenciador.salvar();
     }
 
 }
