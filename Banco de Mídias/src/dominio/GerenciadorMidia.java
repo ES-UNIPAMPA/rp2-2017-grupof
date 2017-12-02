@@ -245,6 +245,15 @@ public class GerenciadorMidia {
     }
 
     public void ordenadorMusica(List listaMidia) {
+        if (listaMidia.size() == 2) {
+            Musica musica = (Musica) listaMidia.get(0);
+            Musica musica2 = (Musica) listaMidia.get(1);
+            if (musica.compareTo(musica2) > 0) {
+                Musica aux1 = musica;
+                listaMidia.set(0, musica2);
+                listaMidia.set(1, musica);
+            }
+        }
         boolean houveTroca;
         do {
             houveTroca = false;
@@ -274,9 +283,9 @@ public class GerenciadorMidia {
 
         } while (houveTroca);
     }
-    
+
     public ArrayList<Midia> ordenadorEbook(ArrayList<Midia> lista) {
-        
+
         ArrayList<Midia> esqueda = new ArrayList<>();
         ArrayList<Midia> direita = new ArrayList<>();
         int meio;
@@ -302,11 +311,10 @@ public class GerenciadorMidia {
         return lista;
     }
 
-<<<<<<< HEAD
     public List exibir() {
         return listaMidia;
     }
-=======
+
     private void ordena(ArrayList<Midia> esquerda, ArrayList<Midia> direita, ArrayList<Midia> lista) {
         int indiceEsquerda = 0;
         int indiceDireita = 0;
@@ -338,36 +346,31 @@ public class GerenciadorMidia {
             indiceLista++;
         }
     }
-    
-   public  void ordenadorPodcast(List listaMidia){
-            
-            for (int i = 0; i < listaMidia.size()/2; i++ ) {
-            for (int j = 0; j <= listaMidia.size() -2; j=j+2){
+
+    public void ordenadorPodcast(List listaMidia) {
+
+        for (int i = 0; i < listaMidia.size() / 2; i++) {
+            for (int j = 0; j <= listaMidia.size() - 2; j = j + 2) {
                 Podcast podcast = (Podcast) listaMidia.get(j);
-                Podcast podcast2 = (Podcast) listaMidia.get(j+ 1);
-                if (podcast.compareTo(podcast2) > 0)
-                {
+                Podcast podcast2 = (Podcast) listaMidia.get(j + 1);
+                if (podcast.compareTo(podcast2) > 0) {
                     Podcast temp = podcast;
                     listaMidia.set(j, podcast2);
-                    listaMidia.set(j +1, temp);
-                    
+                    listaMidia.set(j + 1, temp);
+
                 }
             }
 
-            
-            for (int j = 1; j <=listaMidia.size() -2; j = j+2)
-            {
+            for (int j = 1; j <= listaMidia.size() - 2; j = j + 2) {
                 Podcast podcast = (Podcast) listaMidia.get(j);
-                Podcast podcast2 = (Podcast) listaMidia.get(j+ 1);
-                if (podcast.compareTo(podcast2) > 0)
-                {
+                Podcast podcast2 = (Podcast) listaMidia.get(j + 1);
+                if (podcast.compareTo(podcast2) > 0) {
                     Podcast temp = podcast;
                     listaMidia.set(j, podcast2);
-                    listaMidia.set(j+1, temp);
-                    
+                    listaMidia.set(j + 1, temp);
+
                 }
             }
         }
-     }
->>>>>>> master
+    }
 }

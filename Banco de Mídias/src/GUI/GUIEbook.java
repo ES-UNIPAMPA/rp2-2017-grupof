@@ -5,7 +5,6 @@
  */
 package GUI;
 
-/*
 import Validação.ValidarEntradaDeDados;
 import dominio.GerenciadorMidia;
 import Midias.Midia;
@@ -18,7 +17,6 @@ import java.util.Scanner;
  *
  * @author roliv
  */
- /*
 public class GUIEbook extends GUIMidia implements IMenu {
 
     GerenciadorMidia gerenciador;
@@ -84,7 +82,7 @@ public class GUIEbook extends GUIMidia implements IMenu {
     }
 
     public boolean editarMidia() {
-         List<Midia> listaRetorno;
+        List<Midia> listaRetorno;
         Scanner e = new Scanner(System.in);
         boolean ficar;
         int id;
@@ -164,7 +162,7 @@ public class GUIEbook extends GUIMidia implements IMenu {
                         ebook.setAno(anoEditar);
                     }
                 }
-                if (gerenciador.editarMidia(tituloConsultaEditar, ebook)) {
+                if (gerenciador.editarMidia(ebook)) {
                     System.out.println("Editado com sucesso.");
                     return true;
                 } else {
@@ -227,15 +225,14 @@ public class GUIEbook extends GUIMidia implements IMenu {
         } else {
             System.out.println("Musica inexistente.");
         }
-        
+
     }
-    
-    public void ordenarMidia(){
+
+    public void ordenarMidia() {
         ArrayList<Midia> lista;
-       // lista = gerenciador.getListaMidia();
+        // lista = gerenciador.getListaMidia();
         System.out.println("Lista de Ebook ordenada com sucesso" + "\n");
         //gerenciador.ordenadorEbook(lista).toString();
     }
 
 }
- */

@@ -1,4 +1,4 @@
-3
+4
 
 a
 c
@@ -6,20 +6,9 @@ a
 a
 a
 a
-a
-a
 1
-1
- 
-a
-c
 a
 a
-a
-a
-a
-a
-1
 1
  
 a
@@ -28,8 +17,30 @@ a
 a
 a
 a
+1
 a
 a
 1
+ 
+a
+c
+a
+a
+a
+a
 1
+a
+a
+1
+ 
+C:/matheus
+Teste
+ukjhg
+khjmhn
+khjnb
+cxvb
+Alegrete Brasil
+2016
+100
+gbdvs
  
