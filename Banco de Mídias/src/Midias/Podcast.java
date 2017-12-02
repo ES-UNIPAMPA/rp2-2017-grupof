@@ -1,5 +1,8 @@
 package Midias;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,7 +22,8 @@ public class Podcast extends Midia {
     super(titulo);
     
     }
-    public String[] toArrayString(){
+    
+    public String[] ArraytoString(){
         String[] dados = new String[7];
         dados[0] = this.CaminhoDoArquivo;
         dados[1] = this.titulo;
@@ -44,10 +48,21 @@ public class Podcast extends Midia {
         return dados;
     }
     
-    
-    @Override
-    public boolean equals(Object o) {
-        Podcast outroPodcast = (Podcast) o;
-        return this.getTitulo().equals(outroPodcast.getTitulo());
+    public static List toArray(Podcast p){
+        List<Podcast> podlist = new ArrayList<>();
+        podlist.add(p);
+        return podlist;
     }
+     
+    public int compareTo(Podcast o) {
+        if (Integer.parseInt(ano) > Integer.parseInt(o.ano)) {
+            return -1;
+        }
+        if (Integer.parseInt(ano) < Integer.parseInt(o.ano)) {
+            return 1;
+        }
+        return 0;
+    }
+    
+ 
 }
