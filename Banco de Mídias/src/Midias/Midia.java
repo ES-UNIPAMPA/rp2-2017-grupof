@@ -158,5 +158,9 @@ public class Midia {
         }
         return true;
     }
+    
+    public int compareTo(Ebook o) {
+        return this.titulo.compareToIgnoreCase(o.getTitulo());
+    }
 
 }

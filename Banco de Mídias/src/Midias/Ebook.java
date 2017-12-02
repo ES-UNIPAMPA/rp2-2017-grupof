@@ -1,5 +1,7 @@
 package Midias;
 
+import java.util.Objects;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -66,6 +68,10 @@ public class Ebook extends Midia {
         return dados;
     }
     
+    public int compareTo(Ebook o) {
+        return this.titulo.compareToIgnoreCase(o.getTitulo());
+    }
+    
 //    public String[] toArrayString() {
 //        String[] dados = new String[10];
 //        dados[0] = this.CaminhoDoArquivo;
@@ -85,9 +91,27 @@ public class Ebook extends Midia {
 
     //substitui o equals para comparar o titulo dos obj
     @Override
-    public boolean equals(Object o) {
-        Ebook outroEbook = (Ebook) o;
-        return this.getTitulo().equals(outroEbook.getTitulo());
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Ebook other = (Ebook) obj;
+        if (!Objects.equals(this.local, other.local)) {
+            return false;
+        }
+        if (!Objects.equals(this.editora, other.editora)) {
+            return false;
+        }
+        if (!Objects.equals(this.numPaginas, other.numPaginas)) {
+            return false;
+        }
+        return true;
     }
 
 }

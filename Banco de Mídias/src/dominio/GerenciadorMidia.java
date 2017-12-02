@@ -40,6 +40,10 @@ public class GerenciadorMidia {
         this.caminho = caminho;
     }
 
+    public ArrayList<Midia> getListaMidia() {
+        return listaMidia;
+    }
+
     /**
      * Método para adicionar uma nova midia
      *
@@ -210,8 +214,8 @@ public class GerenciadorMidia {
                 dados.get(7),
                 dados.get(8),
                 dados.get(9));
-        adicionarMidia(novo);
-
+        listaMidia.add(novo);
+        dados.clear();
     }
 
     private void montarMusica(ArrayList<String> dados) {
@@ -270,8 +274,100 @@ public class GerenciadorMidia {
 
         } while (houveTroca);
     }
+    
+    public ArrayList<Midia> ordenadorEbook(ArrayList<Midia> lista) {
+        
+        ArrayList<Midia> esqueda = new ArrayList<>();
+        ArrayList<Midia> direita = new ArrayList<>();
+        int meio;
 
+        if (lista.size() == 1) {
+            return lista;
+        } else {
+            meio = lista.size() / 2;
+
+            for (int i = 0; i < meio; i++) {
+                esqueda.add(lista.get(i));
+            }
+
+            for (int i = meio; i < lista.size(); i++) {
+                direita.add(lista.get(i));
+            }
+
+            esqueda = ordenadorEbook(esqueda);
+            direita = ordenadorEbook(direita);
+
+            ordena(esqueda, direita, lista);
+        }
+        return lista;
+    }
+
+<<<<<<< HEAD
     public List exibir() {
         return listaMidia;
     }
+=======
+    private void ordena(ArrayList<Midia> esquerda, ArrayList<Midia> direita, ArrayList<Midia> lista) {
+        int indiceEsquerda = 0;
+        int indiceDireita = 0;
+        int indiceLista = 0;
+
+        while (indiceEsquerda < esquerda.size() && indiceDireita < direita.size()) {
+            if ((esquerda.get(indiceEsquerda).compareTo((Ebook) direita.get(indiceDireita))) > 0) {
+                lista.set(indiceLista, esquerda.get(indiceEsquerda));
+                indiceEsquerda++;
+            } else {
+                lista.set(indiceLista, direita.get(indiceDireita));
+                indiceDireita++;
+            }
+            indiceLista++;
+        }
+
+        ArrayList<Midia> sobra;
+        int indiceSobra;
+        if (indiceEsquerda >= esquerda.size()) {
+            sobra = direita;
+            indiceSobra = indiceDireita;
+        } else {
+            sobra = esquerda;
+            indiceSobra = indiceEsquerda;
+        }
+
+        for (int i = indiceSobra; i < sobra.size(); i++) {
+            lista.set(indiceLista, sobra.get(i));
+            indiceLista++;
+        }
+    }
+    
+   public  void ordenadorPodcast(List listaMidia){
+            
+            for (int i = 0; i < listaMidia.size()/2; i++ ) {
+            for (int j = 0; j <= listaMidia.size() -2; j=j+2){
+                Podcast podcast = (Podcast) listaMidia.get(j);
+                Podcast podcast2 = (Podcast) listaMidia.get(j+ 1);
+                if (podcast.compareTo(podcast2) > 0)
+                {
+                    Podcast temp = podcast;
+                    listaMidia.set(j, podcast2);
+                    listaMidia.set(j +1, temp);
+                    
+                }
+            }
+
+            
+            for (int j = 1; j <=listaMidia.size() -2; j = j+2)
+            {
+                Podcast podcast = (Podcast) listaMidia.get(j);
+                Podcast podcast2 = (Podcast) listaMidia.get(j+ 1);
+                if (podcast.compareTo(podcast2) > 0)
+                {
+                    Podcast temp = podcast;
+                    listaMidia.set(j, podcast2);
+                    listaMidia.set(j+1, temp);
+                    
+                }
+            }
+        }
+     }
+>>>>>>> master
 }
