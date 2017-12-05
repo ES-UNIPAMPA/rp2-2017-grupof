@@ -52,7 +52,7 @@ public class Musica extends Midia implements Comparable<Musica> {
     @Override
     public String toFile() {
         String dados;
-        dados = super.toFile() + "\n" + this.interpretes + this.duracao + "\n";
+        dados = super.toFile() + "\n" + this.interpretes + "\n" + this.duracao + "\n";
         return dados;
     }
 
