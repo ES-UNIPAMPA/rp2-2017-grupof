@@ -45,14 +45,14 @@ public class Musica extends Midia implements Comparable<Musica> {
     @Override
     public String toString() {
         String dados;
-        dados = this.CaminhoDoArquivo + "\n" + this.titulo + "\n" + this.genero + "\n" + this.idioma + "\n" + this.descricao + "\n" + this.autores + "\n" + this.ano + "\n" + this.interpretes + "\n" + this.duracao + "\n" + "\n";
+        dados = "Caminho do arquivo: " + this.CaminhoDoArquivo + "\n" + "Título: " + this.titulo + "\n" + "Genero: " + this.genero + "\n" + "idioma: " + this.idioma + "\n" + "Descrição: " + this.descricao + "\n" + "Autores: " + this.autores + "\n" + "Ano: " + this.ano + "\n" + "Interpretes: " + this.interpretes + "\n" + "Duração: " + this.duracao + "\n";
         return dados;
     }
 
     @Override
     public String toFile() {
         String dados;
-        dados = super.toFile() + "\n" + this.interpretes + "\n" + this.duracao;
+        dados = super.toFile() + "\n" + this.interpretes + this.duracao + "\n";
         return dados;
     }
 

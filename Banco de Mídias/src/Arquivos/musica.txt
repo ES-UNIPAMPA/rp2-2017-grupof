@@ -1,52 +1,12 @@
-5
+1
 
 /home/matheus/Documentos/rp2-2017-grupof/Banco de Mídias/.
-Sol
-Leonardo e CIA
-Portugues
-Leonardo producoes
-pop
-2017
-Roberto pires
-9
- 
-/home/matheus/Documentos/rp2-2017-grupof/Banco de Mídias/.
-Sol
-Rit do verao
-Portugues
-Leonardo producoes
-pop
-2013
-Gustavo e Wesley
-6
- 
-/home/matheus/Documentos/rp2-2017-grupof/Banco de Mídias/.
 Chuva
-Junior e Guilherme
-Musica inverno
-Portugues
-pop
-2012
-Lucas e CIA
-8
- 
-/home/matheus/Documentos/rp2-2017-grupof/Banco de Mídias/.
-Sol
-Paulo e Junior
-Musica verao
-Portugues
+legal
 Pop
-2010
-Roberto e CIA
-6
- 
-/home/matheus/Documentos/rp2-2017-grupof/Banco de Mídias/.
-Chuva
-Guilherme e Leonardo
-Paulera
-Ingles
-Rock
+Matheus e Matheus
+Portugues
 2017
-Paulo e CIA
-7
+Roberto e CIA8
+
  
