@@ -96,13 +96,6 @@ public class Midia {
         this.ano = ano;
     }
 
-    /*
-    @Override
-    public boolean equals(Object o) {
-        Midia outraMidia = (Midia) o;
-        return this.getTitulo().equals(outraMidia.getTitulo());
-    }
-     */
     public String toFile() {
         String dados = this.CaminhoDoArquivo + "\n" + this.titulo + "\n" + this.descricao + "\n" + this.genero + "\n" + this.autores + "\n" + this.idioma + "\n" + this.ano;
         return dados;

@@ -1,62 +1,52 @@
-6
+5
 
-C:\Users\Matheus Montanha\Documents\RP2GIT\rp2-2017-grupof\Banco de Mídias\.
-Teste
-gdfds
-dgsf
-d
-Chata
-2015
-hgbds
+/home/matheus/Documentos/rp2-2017-grupof/Banco de Mídias/.
+Sol
+Portugues
+pop
+Leonardo e CIA
+Portugues
+2017
+Roberto pires
+9
+ 
+/home/matheus/Documentos/rp2-2017-grupof/Banco de Mídias/.
+Sol
+Portugues
+pop
+Rit do verao
+portugues
+2013
+Gustavo e Wesley
 6
  
-C:\Users\Matheus Montanha\Documents\RP2GIT\rp2-2017-grupof\Banco de Mídias\.
-Teste
-gffdfs
-gdsf
-gbfds
-qwas
-2010
-oplkjk
+/home/matheus/Documentos/rp2-2017-grupof/Banco de Mídias/.
+Chuva
+Musica inverno
+pop
+Junior e Guilherme
+Portugues
+2012
+Lucas e CIA
 8
  
-C:\Users\Matheus Montanha\Documents\RP2GIT\rp2-2017-grupof\Banco de Mídias\.
-outra musica
-olkj
-olk
-jh
-bvcx
-2018
-hdfcxz
+/home/matheus/Documentos/rp2-2017-grupof/Banco de Mídias/.
+Sol
+Musica verao
+Pop
+Paulo e Junior
+Portugues
+2010
+Roberto e CIA
 6
  
-C:\Users\Matheus Montanha\Documents\RP2GIT\rp2-2017-grupof\Banco de Mídias\.
-teste
-iou
-iukjhgb
-polk,jm
-bnvcx
-2020
-nbvc
-6
- 
-C:\Users\Matheus Montanha\Documents\RP2GIT\rp2-2017-grupof\Banco de Mídias\.
-outra musica
-lkmhjnh
-oljkhm
-ikhjgnbv
-likjh
-2008
-olkjhmnh
-4
- 
-C:\Users\Matheus Montanha\Documents\RP2GIT\rp2-2017-grupof\Banco de Mídias\.
-teste
-mnbvc
-pioljk
-piolkj
-dsacvx
-2025
-poljkhm
-6
+/home/matheus/Documentos/rp2-2017-grupof/Banco de Mídias/.
+Chuva
+Paulera
+Rock
+Guilherme e Leonardo
+Ingles
+2017
+Paulo e CIA
+7
  

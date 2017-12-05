@@ -21,10 +21,11 @@ public class Musica extends Midia implements Comparable<Musica> {
     public Musica(String titulo) {
         super(titulo);
     }
-    public Musica(List lista){
-        super(lista); 
+
+    public Musica(List lista) {
+        super(lista);
     }
-    
+
     public String getInterpretes() {
         return interpretes;
     }
@@ -44,7 +45,7 @@ public class Musica extends Midia implements Comparable<Musica> {
     @Override
     public String toString() {
         String dados;
-        dados = this.CaminhoDoArquivo + "\n" + this.titulo + "\n" + this.genero + "\n" + this.idioma + "\n" + this.descricao + "\n" + this.autores + "\n" + this.ano + "\n" + this.interpretes + "\n" + this.duracao;
+        dados = this.CaminhoDoArquivo + "\n" + this.titulo + "\n" + this.genero + "\n" + this.idioma + "\n" + this.descricao + "\n" + this.autores + "\n" + this.ano + "\n" + this.interpretes + "\n" + this.duracao + "\n" + "\n";
         return dados;
     }
 
@@ -106,5 +107,5 @@ public class Musica extends Midia implements Comparable<Musica> {
         }
         return true;
     }
-    
+
 }

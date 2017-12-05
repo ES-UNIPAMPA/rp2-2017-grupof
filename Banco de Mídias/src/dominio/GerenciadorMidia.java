@@ -28,7 +28,11 @@ import java.util.logging.Logger;
 public class GerenciadorMidia {
 
     private ArrayList<Midia> listaMidia;
-    private final String caminho;
+    private String caminho;
+
+    public GerenciadorMidia() {
+
+    }
 
     /**
      * Método construtor para inicializar a list
@@ -251,7 +255,7 @@ public class GerenciadorMidia {
             if (musica.compareTo(musica2) > 0) {
                 Musica aux1 = musica;
                 listaMidia.set(0, musica2);
-                listaMidia.set(1, musica);
+                listaMidia.set(1, aux1);
             }
         }
         boolean houveTroca;
@@ -308,7 +312,7 @@ public class GerenciadorMidia {
 
             ordena(esqueda, direita, lista);
         }
-       // salvar();
+        // salvar();
         return lista;
     }
 

@@ -11,7 +11,7 @@ package GUI;
  */
 public class BancoDeMidia {
 
-    public void MenuPrincipal() {
+    public void MenuPrincipal() {       
         int opcao = Integer.MIN_VALUE;
         do {
             System.out.println("Bem-vindo. Escolha a midia que deseja: ");
@@ -30,6 +30,9 @@ public class BancoDeMidia {
                     menuEbook.MenuEbook();
                 case 3:
                 case 4:
+                case 5:
+
+                    break;
                 case 0:
                     System.out.println("Até logo!");
                     break;

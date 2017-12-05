@@ -89,14 +89,6 @@ public class GUIMusica extends GUIMidia implements IMenu {
         if (gerenciador.adicionarMidia(musica)) {
             System.out.println("Registrado com sucesos.");
         }
-        /*
-        listaRetorno.add(musica);
-        if (listaRetorno.size() > 2) {
-            gerenciador.ordenadorMusica(listaRetorno);
-            System.out.println(listaRetorno.toString());
-        }
-         */
-
     }
 
     @Override
