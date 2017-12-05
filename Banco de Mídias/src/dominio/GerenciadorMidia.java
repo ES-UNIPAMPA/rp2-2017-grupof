@@ -7,6 +7,7 @@
 package dominio;
 
 import Midias.Ebook;
+import Midias.Jogos;
 import Midias.Midia;
 import Midias.Musica;
 import Midias.Podcast;
@@ -218,6 +219,8 @@ public class GerenciadorMidia {
             case "podcast.txt":
                 montarPodcast(dados);
                 break;
+            case "jogos.txt":
+                montarJogos(dados);
             default:
                 System.out.println("Nome de arquivo inválido!");
                 break;
@@ -279,6 +282,21 @@ public class GerenciadorMidia {
                 dados.get(6));
         adicionarMidia(novo);
 
+    }
+    
+    private void montarJogos(ArrayList<String> dados) {
+        Midia novo = new Jogos(dados.get(0),
+                dados.get(1),
+                dados.get(2),
+                dados.get(3),
+                dados.get(4),
+                dados.get(5),
+                dados.get(6),
+                dados.get(7),
+                dados.get(8),
+                dados.get(9));
+        listaMidia.add(novo);
+        dados.clear();
     }
 
     /**

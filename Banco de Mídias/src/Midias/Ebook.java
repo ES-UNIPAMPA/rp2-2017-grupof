@@ -115,4 +115,13 @@ public class Ebook extends Midia {
         return true;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.local);
+        hash = 97 * hash + Objects.hashCode(this.editora);
+        hash = 97 * hash + Objects.hashCode(this.numPaginas);
+        return hash;
+    }
+
 }
