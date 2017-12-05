@@ -30,14 +30,10 @@ public class GerenciadorMidia {
     private ArrayList<Midia> listaMidia;
     private String caminho;
 
-    public GerenciadorMidia() {
-
-    }
-
     /**
      * Método construtor para inicializar a list
      *
-     * @param caminho
+     * @param caminho do arquivo txt
      */
     public GerenciadorMidia(String caminho) {
         this.listaMidia = new ArrayList();
@@ -65,7 +61,7 @@ public class GerenciadorMidia {
     /**
      * Método para excluir uma mídia.
      *
-     * @param midias
+     * @param midias passado para ser removido
      * @return True caso foi removido com sucesso, caso contrário, retorna
      * False;
      */
@@ -82,7 +78,6 @@ public class GerenciadorMidia {
     /**
      * Método para editar uma musica existente
      *
-     * @param titulo para saber qual musica que deseja editar
      * @param novaMidia recebe a nova mídia já editada
      * @return True caso foi editado com sucesso, caso contrário, retorna False
      */
@@ -99,8 +94,9 @@ public class GerenciadorMidia {
     /**
      * Método para consultar uma mídia desejada
      *
-     * @param midiaTitulo
-     * @return retorna uma String com a midia desejada
+     * @param midiaTitulo identifica todas as midias com esse titulo e add numa
+     * lista.
+     * @return retorna uma List com as midia com o titulo passado
      */
     public List consultarMidia(String midiaTitulo) {
         ArrayList<Midia> listaRetorno = new ArrayList<>();
@@ -127,6 +123,11 @@ public class GerenciadorMidia {
         return false;
     }
 
+    /**
+     * Método que retorna todas as mídias contidas na listMidia
+     *
+     * @return uma list com todas as midias
+     */
     public ArrayList retornaMidias() {
         ArrayList<Midia> listaTodos = new ArrayList<>();
         for (int i = 0; i < listaMidia.size(); i++) {
@@ -135,6 +136,11 @@ public class GerenciadorMidia {
         return listaTodos;
     }
 
+    /**
+     * Método que escreve as midias contidas na lista em um arquivo de texto
+     *
+     * @return True caso salvo, caso contrário retorna False
+     */
     public boolean salvar() {
         String novaLinha = System.getProperty("line.separator");
         try {
@@ -155,6 +161,11 @@ public class GerenciadorMidia {
         return true;
     }
 
+    /**
+     * Método que carrega as midias contidas no arquivo de texto
+     *
+     * @return True caso carregou, caso contrário, retorna False
+     */
     public boolean carregar() {
         File arquivo;
         arquivo = new File(caminho);
@@ -188,6 +199,13 @@ public class GerenciadorMidia {
         return true;
     }
 
+    /**
+     * Método que identifica o tipo de midia que esta sendo passada para
+     * realizar o carregamento para a listaMidia
+     *
+     * @param dados ArrayList contendo os dados do arquivo txt
+     * @param arquivo para identificar o nome da musica que sendo passado
+     */
     private void montarMidia(ArrayList<String> dados, File arquivo) {
 
         switch (arquivo.getName()) {
@@ -207,6 +225,11 @@ public class GerenciadorMidia {
 
     }
 
+    /**
+     * Método que cria um objeto com as informações contidas no ArrayList dados
+     *
+     * @param dados ArrayList contendo os dados lidos do arquivo txt
+     */
     private void montarEbook(ArrayList<String> dados) {
         Midia novo = new Ebook(dados.get(0),
                 dados.get(1),
@@ -222,6 +245,11 @@ public class GerenciadorMidia {
         dados.clear();
     }
 
+    /**
+     * Método que cria um objeto com as informações contidas no ArrayList dados
+     *
+     * @param dados ArrayList contendo os dados lidos do arquivo txt
+     */
     private void montarMusica(ArrayList<String> dados) {
         Midia novo = new Musica(dados.get(0),
                 dados.get(1),
@@ -236,6 +264,11 @@ public class GerenciadorMidia {
         dados.clear();
     }
 
+    /**
+     * Método que cria um objeto com as informações contidas no ArrayList dados
+     *
+     * @param dados ArrayList contendo os dados lidos do arquivo txt
+     */
     private void montarPodcast(ArrayList<String> dados) {
         Midia novo = new Podcast(dados.get(0),
                 dados.get(1),
@@ -248,6 +281,11 @@ public class GerenciadorMidia {
 
     }
 
+    /**
+     * Método ordenador da midia Música. O método ordena com o Cocktail Sort.
+     *
+     * @param listaMidia contendo as midias a serem ordenadas
+     */
     public void ordenadorMusica(List listaMidia) {
         if (listaMidia.size() == 2) {
             Musica musica = (Musica) listaMidia.get(0);
@@ -288,6 +326,12 @@ public class GerenciadorMidia {
         } while (houveTroca);
     }
 
+    /**
+     * Método que ordena a midia Ebook. O método ordena com o Merge Sort
+     *
+     * @param lista recebido com as midias a serem ordenadas
+     * @return
+     */
     public List ordenadorEbook(List lista) {
 
         List<Midia> esqueda = new ArrayList();
@@ -366,6 +410,10 @@ public class GerenciadorMidia {
 //        }
     }
 
+    /**
+     * Método que ordena a mídia PodCast
+     * @param listaMidia recebido com as midias que deseja ordenar
+     */
     public void ordenadorPodcast(List listaMidia) {
 
         for (int i = 0; i < listaMidia.size() / 2; i++) {

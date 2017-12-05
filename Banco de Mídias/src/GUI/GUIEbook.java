@@ -9,7 +9,6 @@ import Validação.ValidarEntradaDeDados;
 import dominio.GerenciadorMidia;
 import Midias.Midia;
 import Midias.Ebook;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,11 +21,17 @@ public class GUIEbook extends GUIMidia implements IMenu {
     GerenciadorMidia gerenciador;
     final String caminho = "src/Arquivos/ebook.txt";
 
+    /**
+     * Método que cria o gerenciador contendo o caminho do arquivo txt
+     */
     public GUIEbook() {
         gerenciador = new GerenciadorMidia(caminho);
         gerenciador.carregar();
     }
 
+    /**
+     * Método contendo as opções disponíveis no menue Ebook
+     */
     public void MenuEbook() {
 
         int opcao = -1;
@@ -61,6 +66,9 @@ public class GUIEbook extends GUIMidia implements IMenu {
         } while (opcao != 5);
     }
 
+    /**
+     * Método que recebe e cria um Ebook
+     */
     @Override
     public void criarMidia() {
         super.criarMidia();
@@ -78,6 +86,11 @@ public class GUIEbook extends GUIMidia implements IMenu {
         System.out.println("Ebook adicionado com sucesso!");
     }
 
+    /**
+     * Método que edita o Ebook
+     *
+     * @return True caso editado. Caso contrário, retorna False
+     */
     public boolean editarMidia() {
         List<Midia> listaRetorno;
         Scanner e = new Scanner(System.in);
@@ -176,6 +189,9 @@ public class GUIEbook extends GUIMidia implements IMenu {
         return false;
     }
 
+    /**
+     * Método que remove o Ebook desejado
+     */
     public void removerMidia() {
         List<Midia> listaPegaRetorno;
         String tituloRemover = null;
@@ -209,6 +225,9 @@ public class GUIEbook extends GUIMidia implements IMenu {
         }
     }
 
+    /**
+     * Método que consulta o Ebook desejado
+     */
     public void consultarMidia() {
         List<Midia> listaPegaRetorno;
         String tituloConsulta = null;
@@ -226,8 +245,11 @@ public class GUIEbook extends GUIMidia implements IMenu {
 
     }
 
+    /**
+     * Método que ordena o ebook
+     */
     public void ordenarMidia() {
-        
+
         // lista = gerenciador.getListaMidia();
         System.out.println("Lista de Ebook ordenada com sucesso" + "\n");
         gerenciador.ordenadorEbook(gerenciador.getListaMidia());

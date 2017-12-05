@@ -22,11 +22,19 @@ public class GUIMusica extends GUIMidia implements IMenu {
     dominio.GerenciadorMidia gerenciador;
     static String caminho = new java.io.File(".").getAbsolutePath();
 
+    /**
+     * Método construtor do menu musica contendo o caminho do arquivo txt da
+     * musica
+     *
+     */
     public GUIMusica() {
         gerenciador = new GerenciadorMidia(camArquivoTxT);
         gerenciador.carregar();
     }
 
+    /**
+     * Método que mostra as opções disponíveis do software
+     */
     public void MenuMusica() {
         Scanner e = new Scanner(System.in);
         int opcao = Integer.MIN_VALUE;
@@ -64,6 +72,9 @@ public class GUIMusica extends GUIMidia implements IMenu {
         } while (opcao != 5);
     }
 
+    /**
+     * Método que recebe as informações da musica e o cria.
+     */
     @Override
     public void criarMidia() {
         Scanner e = new Scanner(System.in);
@@ -91,6 +102,11 @@ public class GUIMusica extends GUIMidia implements IMenu {
         }
     }
 
+    /**
+     * Método que edita a música desejada.
+     *
+     * @return True caso editado. Caso contrário, retorna False.
+     */
     @Override
     public boolean editarMidia() {
         List<Midia> listaRetorno;
@@ -180,6 +196,9 @@ public class GUIMusica extends GUIMidia implements IMenu {
         return false;
     }
 
+    /**
+     * Método que remove a musica desejada
+     */
     public void removerMidia() {
         List<Midia> listaPegaRetorno;
         Scanner e = new Scanner(System.in);
@@ -214,6 +233,9 @@ public class GUIMusica extends GUIMidia implements IMenu {
         }
     }
 
+    /**
+     * Método que consulta as músicas desejadas
+     */
     public void consultarMidia() {
         Scanner e = new Scanner(System.in);
         List<Midia> listaPegaRetorno;
@@ -231,6 +253,9 @@ public class GUIMusica extends GUIMidia implements IMenu {
         }
     }
 
+    /**
+     * Método que exibi todas as músicas.
+     */
     public void exibir() {
         List<Midia> listaRetorno;
         listaRetorno = gerenciador.exibir();

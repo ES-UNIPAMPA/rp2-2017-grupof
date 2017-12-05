@@ -16,6 +16,13 @@ import java.util.regex.Pattern;
  */
 public class ValidarEntradaDeDados {
 
+    /**
+     * Método que recebe um texto e verifica se não contém numeros no meio da
+     * String passado
+     *
+     * @param texto contendo o texto recebido
+     * @return String caso o texto tenha somente texto
+     */
     public static String nextLine(String texto) {
         boolean ficar;
         do {
@@ -38,6 +45,12 @@ public class ValidarEntradaDeDados {
         return texto;
     }
 
+    /**
+     * Método que recebe uma String e verifica se contém apenas numeros
+     *
+     * @param numero contendo o texto recebido
+     * @return String caso o texto contenha somente numeros
+     */
     public static String nextInt(String numero) {
         Scanner e = new Scanner(System.in);
         boolean ficar;
@@ -55,6 +68,13 @@ public class ValidarEntradaDeDados {
         return numero;
     }
 
+    /**
+     * Método que recebe uma String e verifica se o texto passado é do formato
+     * Double.
+     *
+     * @param numero contendo o texto
+     * @return String caso o texto esteja em formato Double
+     */
     public static String nextDouble(String numero) {
         Scanner e = new Scanner(System.in);
         boolean ficar;
@@ -71,8 +91,13 @@ public class ValidarEntradaDeDados {
         return numero;
     }
 
+    /**
+     * Método que recebe um número inteiro já encapsulado
+     *
+     * @param numero inteiro recebido
+     * @return inteiro caso o numero passado seja inteiro
+     */
     public static int validarInteiro(int numero) {
-        boolean ficar;
         Scanner e = new Scanner(System.in);
         try {
             numero = e.nextInt();
@@ -82,6 +107,12 @@ public class ValidarEntradaDeDados {
         return numero;
     }
 
+    /**
+     * Método que valida o texto aceitando enter
+     *
+     * @param texto recebido para validação
+     * @return String caso tenha somente texto
+     */
     public static String entradaEnterTexto(String texto) {
         boolean ficar;
         do {
@@ -105,6 +136,13 @@ public class ValidarEntradaDeDados {
 
     }
 
+    /**
+     * Método que valida a entrada de texto em formato de numero, aceitando
+     * enter.
+     *
+     * @param texto recebido para validação
+     * @return String caso contenha apenas numeros
+     */
     public static String entradaEnterNumero(String texto) {
         Scanner e = new Scanner(System.in);
         boolean ficar;
