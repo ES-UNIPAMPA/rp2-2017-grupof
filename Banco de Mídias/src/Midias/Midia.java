@@ -22,7 +22,7 @@ public class Midia {
     protected String autores;
     protected String ano;
 
-    public Midia(String CaminhoDoArquivo, String titulo, String genero, String idioma, String descricao, String autores, String ano) {
+    public Midia(String CaminhoDoArquivo, String titulo, String autores, String descricao, String idioma, String genero, String ano) {
         this.CaminhoDoArquivo = CaminhoDoArquivo;
         this.titulo = titulo;
         this.genero = genero;
