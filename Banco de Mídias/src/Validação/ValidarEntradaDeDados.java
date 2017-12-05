@@ -113,13 +113,12 @@ public class ValidarEntradaDeDados {
      * @param texto recebido para validação
      * @return String caso tenha somente texto
      */
-    public static String entradaEnterTexto(String texto) {
+    public static String enterTexto(String texto) {
         boolean ficar;
         do {
             Scanner e = new Scanner(System.in);
             ficar = false;
             texto = e.nextLine();
-            //texto = texto.trim();
             if (texto == null || texto.equals(" ")) {
                 ficar = true;
                 System.out.println("Formato incorreto. Digite novamente: ");
@@ -143,7 +142,7 @@ public class ValidarEntradaDeDados {
      * @param texto recebido para validação
      * @return String caso contenha apenas numeros
      */
-    public static String entradaEnterNumero(String texto) {
+    public static String enterNumero(String texto) {
         Scanner e = new Scanner(System.in);
         boolean ficar;
         do {

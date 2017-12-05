@@ -119,55 +119,55 @@ public class GUIEbook extends GUIMidia implements IMenu {
                 if (gerenciador.verificarMidia(tituloConsultaEditar)) {
                     System.out.println("Digite o novo titulo do ebook: ");
                     System.out.println("[TECLE ENTER PARA IGNORAR]");
-                    tituloEditar = ValidarEntradaDeDados.entradaEnterTexto(tituloEditar);
+                    tituloEditar = ValidarEntradaDeDados.enterTexto(tituloEditar);
                     if (tituloEditar.equals("")); else {
                         ebook.setTitulo(tituloEditar);
                     }
                     System.out.println("Digite o novo genero do ebook: ");
                     System.out.println("[TECLE ENTER PARA IGNORAR]");
-                    generoEditar = ValidarEntradaDeDados.entradaEnterTexto(generoEditar);
+                    generoEditar = ValidarEntradaDeDados.enterTexto(generoEditar);
                     if (generoEditar.equals("")); else {
                         ebook.setGenero(generoEditar);
                     }
                     System.out.println("Digite o novo idioma do ebook: ");
                     System.out.println("[TECLE ENTER PARA IGNORAR]");
-                    idiomaEditar = ValidarEntradaDeDados.entradaEnterTexto(idiomaEditar);
+                    idiomaEditar = ValidarEntradaDeDados.enterTexto(idiomaEditar);
                     if (idiomaEditar.equals("")); else {
                         ebook.setIdioma(idiomaEditar);
                     }
                     System.out.println("Digite a nova descrição do ebook: ");
                     System.out.println("[TECLE ENTER PARA IGNORAR]");
-                    descricaoEditar = ValidarEntradaDeDados.entradaEnterTexto(descricaoEditar);
+                    descricaoEditar = ValidarEntradaDeDados.enterTexto(descricaoEditar);
                     if (descricaoEditar.equals("")); else {
                         ebook.setDescricao(descricaoEditar);
                     }
                     System.out.println("Digite o novo número de páginas do ebook: ");
                     System.out.println("[TECLE ENTER PARA IGNORAR]");
-                    numPaginasEditar = ValidarEntradaDeDados.entradaEnterNumero(numPaginasEditar);
+                    numPaginasEditar = ValidarEntradaDeDados.enterNumero(numPaginasEditar);
                     if (numPaginasEditar.equals("")); else {
                         ebook.setNumPaginas(numPaginasEditar);
                     }
                     System.out.println("Digite a nova editora do ebook: ");
                     System.out.println("[TECLE ENTER PARA IGNORAR]");
-                    editoraEditar = ValidarEntradaDeDados.entradaEnterNumero(editoraEditar);
+                    editoraEditar = ValidarEntradaDeDados.enterNumero(editoraEditar);
                     if (editoraEditar.equals("")); else {
                         ebook.setEditora(editoraEditar);
                     }
                     System.out.println("Digite os novos autores da musica: ");
                     System.out.println("[TECLE ENTER PARA IGNORAR]");
-                    autoresEditar = ValidarEntradaDeDados.entradaEnterTexto(autoresEditar);
+                    autoresEditar = ValidarEntradaDeDados.enterTexto(autoresEditar);
                     if (autoresEditar.equals("")); else {
                         ebook.setAutores(autoresEditar);
                     }
                     System.out.println("Digite o novo local: ");
                     System.out.println("[TECLE ENTER PARA IGNORAR]");
-                    localEditar = ValidarEntradaDeDados.entradaEnterTexto(localEditar);
+                    localEditar = ValidarEntradaDeDados.enterTexto(localEditar);
                     if (localEditar.equals("")); else {
                         ebook.setLocal(localEditar);
                     }
                     System.out.println("Digite o novo ano: ");
                     System.out.println("[TECLE ENTER PARA IGNORAR]");
-                    anoEditar = ValidarEntradaDeDados.entradaEnterNumero(anoEditar);
+                    anoEditar = ValidarEntradaDeDados.enterNumero(anoEditar);
                     if (anoEditar.equals("")); else {
                         ebook.setAno(anoEditar);
                     }
