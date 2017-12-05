@@ -283,7 +283,7 @@ public class GerenciadorMidia {
         adicionarMidia(novo);
 
     }
-    
+
     private void montarJogos(ArrayList<String> dados) {
         Midia novo = new Jogos(dados.get(0),
                 dados.get(1),
@@ -412,24 +412,11 @@ public class GerenciadorMidia {
 
             indiceLista++;
         }
-//        List sobra;
-//        int indiceSobra;
-//        if (indiceEsquerda >= esquerda.size()) {
-//            sobra = direita;
-//            indiceSobra = indiceDireita;
-//        } else {
-//            sobra = esquerda;
-//            indiceSobra = indiceEsquerda;
-//        }
-//
-//        for (int i = indiceSobra; i < sobra.size(); i++) {
-//            lista.set(indiceLista, sobra.get(i));
-//            indiceLista++;
-//        }
     }
 
     /**
      * Método que ordena a mídia PodCast
+     *
      * @param listaMidia recebido com as midias que deseja ordenar
      */
     public void ordenadorPodcast(List listaMidia) {

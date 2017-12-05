@@ -39,7 +39,8 @@ public class GUIJogos extends GUIMidia implements IMenu {
             System.out.println("2 - Excluir jogo.");
             System.out.println("3 - Consultar jogo.");
             System.out.println("4 - Editar jogo.");
-            System.out.println("5 - Voltar ao menu principal");
+            System.out.println("5 - Organizar lista por título.");
+            System.out.println("0 - Voltar ao menu principal");
             System.out.println("O que deseja fazer?");
             opcao = Validação.ValidarEntradaDeDados.validarInteiro(opcao);
             switch (opcao) {
@@ -51,18 +52,21 @@ public class GUIJogos extends GUIMidia implements IMenu {
                     break;
                 case 3:
                     consultarMidia();
-                    //ordenarMidia();
                     break;
                 case 4:
                     editarMidia();
                     break;
                 case 5:
+                    ordenarMidia();
+                    break;
+                case 0:
+                    ordenarMidia();
                     break;
                 default:
                     System.out.println("Opção inválida. Digite o número da opção desejada.");
                     break;
             }
-        } while (opcao != 5);
+        } while (opcao != 0);
     }
 
     /**
@@ -73,11 +77,11 @@ public class GUIJogos extends GUIMidia implements IMenu {
         super.criarMidia();
         String numJogadores = null, suporteRede = null, empresa = null;
 
-        System.out.println("Digite o número de páginas: ");
+        System.out.println("Digite o número de jogadores: ");
         numJogadores = ValidarEntradaDeDados.nextInt(numJogadores);
-        System.out.println("Digite o nome da editora: ");
+        System.out.println("Opção online? ");
         suporteRede = ValidarEntradaDeDados.nextLine(suporteRede);
-        System.out.println("Digite o local/país:");
+        System.out.println("Digite o nome desenvolvedora: ");
         empresa = ValidarEntradaDeDados.nextLine(empresa);
 
         Midia jogo = new Jogos(caminhoArquivo, titulo, descricao, genero, autores, idioma, ano, numJogadores, suporteRede, empresa);
@@ -248,7 +252,7 @@ public class GUIJogos extends GUIMidia implements IMenu {
     public void ordenarMidia() {
 
         // lista = gerenciador.getListaMidia();
-        System.out.println("Lista de Ebook ordenada com sucesso" + "\n");
+        System.out.println("Lista de Jogos ordenada com sucesso" + "\n");
         gerenciador.ordenadorEbook(gerenciador.getListaMidia());
         gerenciador.salvar();
     }

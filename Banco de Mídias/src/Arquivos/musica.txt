@@ -18,29 +18,5 @@ Musica inverno
 Portugues
 pop
 2017
-Paulo e Roberto
-8.00
-
- 
-/home/matheus/Documentos/rp2-2017-grupof/Banco de Mídias/.
-Sol
-Guilherme e Heitor
-Legal
-Portugues
-Rock
-2012
-Paulo e Gustavo
-8.20
-
- 
-/home/matheus/Documentos/rp2-2017-grupof/Banco de Mídias/.
-Sol
-Legal
-Pop-rock
-Paulo e Joao
-Portugues
-2014
-Paulo
-3.55
-
+Roberto e CIA8
  

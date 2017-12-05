@@ -64,7 +64,7 @@ public class Ebook extends Midia {
     @Override
     public String toFile() {
         String dados;
-        dados = super.toFile() + "\n" + this.numPaginas + "\n" + this.editora + "\n" + this.local;
+        dados = super.toFile() + novaLinha + this.numPaginas + novaLinha + this.editora + novaLinha + this.local;
         return dados;
     }
     

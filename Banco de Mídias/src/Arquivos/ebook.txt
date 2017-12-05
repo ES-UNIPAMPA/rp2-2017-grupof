@@ -1,81 +1,57 @@
-4
+5
 
-<<<<<<< refs/remotes/origin/master
-a
-c
-a
-a
-a
-a
-1
-a
-a
-1
+c:\Documents\MyEbooks
+The Legend of Drizzt Book I - HomeLand
+Livro de bolso
+Aventura, Fantasia
+R. A. Salvatore
+Ingles
+352
+Wizards of the Coast
+USA
+1990
  
-a
-c
-a
-a
-a
-a
-1
-a
-a
-1
+c:\Documents\MyEbooks
+Cem Anos de Solid�o
+Capa simples
+Drama, Fic��o
+Gabriel Garcia Marques
+Portugues - Br
+Record
+Colombia
+1967
+448
  
-a
-c
-a
-a
-a
-a
-1
-a
-a
-1
-=======
-ccc
-ccc
-ccc
-ccc
-ccc
-ccc
-ccc
-ccc
-333
-333
+c:\Documents\MyEbooks
+Fight Club
+Capa Dura
+Drama, Violencia, Crime
+Cuck Palahniuk
+Ingles
+W. W. Norton & Company
+USA
+1996
+272
  
-ccc
-aaa
-ccc
-ccc
-ccc
-ccc
-ccc
-ccc
-333
-333
+c:\Documents\MyEbooks
+Sandman Slim
+Capa simples
+Acao, Aventura, Sobrenatural
+Richard Kadrey
+Ingles
+HarperVoyager
+USA
+2009
+404
  
-ccc
-bbb
-ccc
-ccc
-ccc
-ccc
-ccc
-ccc
-333
-333
->>>>>>> conflito
- 
-C:/matheus
-Teste
-ukjhg
-khjmhn
-khjnb
-cxvb
-Alegrete Brasil
-2016
-100
-gbdvs
+c:\Documents\MyEbooks
+Hellblazer - Original Sins
+Volume I
+Horror, drama
+Jamie DeLano, Rick Veitch, John Ridgway
+Ingles
+USA
+1993
+287
+Vertigo
  

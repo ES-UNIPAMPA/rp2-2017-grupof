@@ -21,6 +21,7 @@ public class Midia {
     protected String descricao;
     protected String autores;
     protected String ano;
+    String novaLinha = System.getProperty("line.separator");
 
     public Midia(String CaminhoDoArquivo, String titulo, String autores, String descricao, String idioma, String genero, String ano) {
         this.CaminhoDoArquivo = CaminhoDoArquivo;
@@ -97,7 +98,7 @@ public class Midia {
     }
 
     public String toFile() {
-        String dados = this.CaminhoDoArquivo + "\n" + this.titulo + "\n" + this.descricao + "\n" + this.genero + "\n" + this.autores + "\n" + this.idioma + "\n" + this.ano;
+        String dados = this.CaminhoDoArquivo + novaLinha + this.titulo + novaLinha + this.descricao + novaLinha + this.genero + novaLinha + this.autores + novaLinha + this.idioma + novaLinha + this.ano;
         return dados;
     }
 

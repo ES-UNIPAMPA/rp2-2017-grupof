@@ -63,7 +63,7 @@ public class Jogos extends Midia {
     @Override
     public String toFile() {
         String dados;
-        dados = super.toFile() + "\n" + this.numJogadores + "\n" + this.suporteRede + "\n" + this.empresa;
+        dados = super.toFile() + novaLinha + this.numJogadores + novaLinha + this.suporteRede + novaLinha + this.empresa;
         return dados;
     }
     

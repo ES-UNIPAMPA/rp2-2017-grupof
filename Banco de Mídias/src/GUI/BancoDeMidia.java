@@ -17,7 +17,8 @@ public class BancoDeMidia {
             System.out.println("Bem-vindo. Escolha a midia que deseja: ");
             System.out.println("1 - Musica.");
             System.out.println("2 - Ebook.");
-            System.out.println("4 - Podcast.");
+            System.out.println("3 - Podcast.");
+            System.out.println("4 - Jogos.");
             System.out.println("0 - Sair.");
             System.out.println("Digite a opção desejada: ");
             opcao = Validação.ValidarEntradaDeDados.validarInteiro(opcao);
@@ -30,6 +31,8 @@ public class BancoDeMidia {
                     menuEbook.MenuEbook();
                 case 3:
                 case 4:
+                    GUIJogos menuJogos = new GUIJogos();
+                    menuJogos.MenuJogos();
                 case 5:
 
                     break;

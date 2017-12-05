@@ -39,7 +39,8 @@ public class GUIEbook extends GUIMidia implements IMenu {
             System.out.println("2 - Excluir ebook.");
             System.out.println("3 - Consultar ebook.");
             System.out.println("4 - Editar ebook.");
-            System.out.println("5 - Voltar ao menu principal");
+            System.out.println("5 - Organizar lista por título.");
+            System.out.println("0 - Voltar ao menu principal");
             System.out.println("O que deseja fazer?");
             opcao = Validação.ValidarEntradaDeDados.validarInteiro(opcao);
             switch (opcao) {
@@ -57,12 +58,15 @@ public class GUIEbook extends GUIMidia implements IMenu {
                     editarMidia();
                     break;
                 case 5:
+                    ordenarMidia();
+                    break;
+                case 0:
                     break;
                 default:
                     System.out.println("Opção inválida. Digite o número da opção desejada.");
                     break;
             }
-        } while (opcao != 5);
+        } while (opcao != 0);
     }
 
     /**
@@ -233,6 +237,7 @@ public class GUIEbook extends GUIMidia implements IMenu {
         listaPegaRetorno = gerenciador.consultarMidia(tituloConsulta);
         if (!listaPegaRetorno.isEmpty()) {
             gerenciador.ordenadorEbook(listaPegaRetorno);
+            gerenciador.salvar();
             for (Midia midia : listaPegaRetorno) {
                 System.out.println(midia.toString());
             }
